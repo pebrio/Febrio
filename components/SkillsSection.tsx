@@ -1,6 +1,6 @@
 import SectionHeading from "./SectionHeading";
-import ScrollReveal from "./ScrollReveal";
 import SectionBackground from "./SectionBackground";
+import SkillsAutoSlider from "./SkillsAutoSlider";
 
 const skills = [
   { name: "Laravel", category: "Backend" },
@@ -25,17 +25,9 @@ export default function SkillsSection() {
         title="Teknologi yang saya gunakan untuk membangun solusi."
         description="Bagian ini menampilkan skill utama agar pengunjung cepat menangkap stack yang Anda kuasai."
       />
-      <ScrollReveal className="mt-10 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
-        {skills.map((skill) => (
-          <div key={skill.name} className="portfolio-card rounded-2xl p-5">
-            <p className="text-sm uppercase tracking-[0.28em] text-orange-400">
-              {skill.category}
-            </p>
-          <h3 className="mt-3 text-xl font-semibold text-white">{skill.name}</h3>
-        </div>
-      ))}
-      </ScrollReveal>
+      <SkillsAutoSlider skills={skills} />
       </div>
     </section>
   );
 }
+

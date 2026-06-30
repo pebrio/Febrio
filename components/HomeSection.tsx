@@ -1,3 +1,4 @@
+import Image from "next/image";
 import ScrollReveal from "./ScrollReveal";
 import AnimatedCounter from "./AnimatedCounter";
 import ShapeGrid from "./ShapeGrid";
@@ -88,30 +89,34 @@ export default function HomeSection() {
         <ScrollReveal className="relative">
           <div className="portfolio-card relative overflow-hidden rounded-[2rem] p-6">
             <div className="absolute inset-0 bg-gradient-to-br from-orange-500/10 via-transparent to-white/5" />
-            <div className="relative aspect-[4/5] rounded-[1.6rem] border border-white/10 bg-gradient-to-b from-white/10 via-white/5 to-transparent p-6">
-              <div className="flex h-full flex-col justify-between">
-                <div className="space-y-3">
-                  <div className="h-4 w-24 rounded-full bg-white/20" />
-                  <div className="h-10 w-40 rounded-2xl bg-white/15" />
-                  <div className="h-10 w-52 rounded-2xl bg-orange-400/20" />
+            <div className="relative space-y-4">
+              <div className="relative aspect-[4/5] overflow-hidden rounded-[1.6rem] border border-white/10">
+                <Image
+                  src="/images/profile.png"
+                  alt="Akhmad Febriyo Febriyansyah"
+                  fill
+                  priority
+                  sizes="(max-width: 1024px) 100vw, 400px"
+                  className="object-cover object-top"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-black/10 to-transparent" />
+              </div>
+              <div className="grid gap-3">
+                <div className="rounded-2xl border border-white/10 bg-black/20 p-4">
+                  <p className="text-xs uppercase tracking-[0.3em] text-orange-300">
+                    Focus
+                  </p>
+                  <p className="mt-2 text-sm text-white/80">
+                    Web development, dashboard, dan IoT integration.
+                  </p>
                 </div>
-                <div className="grid gap-3">
-                  <div className="rounded-2xl border border-white/10 bg-black/20 p-4">
-                    <p className="text-xs uppercase tracking-[0.3em] text-orange-300">
-                      Focus
-                    </p>
-                    <p className="mt-2 text-sm text-white/80">
-                      Web development, dashboard, dan IoT integration.
-                    </p>
-                  </div>
-                  <div className="rounded-2xl border border-white/10 bg-black/20 p-4">
-                    <p className="text-xs uppercase tracking-[0.3em] text-orange-300">
-                      Approach
-                    </p>
-                    <p className="mt-2 text-sm text-white/80">
-                      Clean UI, fast delivery, dan struktur yang scalable.
-                    </p>
-                  </div>
+                <div className="rounded-2xl border border-white/10 bg-black/20 p-4">
+                  <p className="text-xs uppercase tracking-[0.3em] text-orange-300">
+                    Approach
+                  </p>
+                  <p className="mt-2 text-sm text-white/80">
+                    Clean UI, fast delivery, dan struktur yang scalable.
+                  </p>
                 </div>
               </div>
             </div>

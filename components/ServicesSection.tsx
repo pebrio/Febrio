@@ -50,7 +50,7 @@ export default function ServicesSection() {
       />
       <ScrollReveal className="mt-10 grid gap-5 md:grid-cols-2 xl:grid-cols-3">
         {services.map((service) => (
-          <article key={service.title} className="portfolio-card rounded-3xl p-6">
+          <article key={service.title} className="portfolio-card rounded-3xl p-6 transition hover:-translate-y-1 hover:shadow-[0_24px_60px_rgba(29,78,216,0.16)] cursor-pointer">
             <div className="mb-5 h-12 w-12 rounded-2xl bg-gradient-to-br from-orange-400 to-orange-600" />
             <h3 className="text-xl font-semibold text-white">{service.title}</h3>
             <p className="mt-3 text-sm leading-6 text-white/75">
@@ -63,3 +63,4 @@ export default function ServicesSection() {
     </section>
   );
 }
+

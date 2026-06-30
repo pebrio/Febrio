@@ -110,6 +110,24 @@ body {
   transform: translateY(0);
 }
 
+.skills-marquee-track {
+  animation: skills-marquee 32s linear infinite;
+}
+
+.skills-marquee:hover .skills-marquee-track {
+  animation-play-state: paused;
+}
+
+@keyframes skills-marquee {
+  from {
+    transform: translateX(0);
+  }
+
+  to {
+    transform: translateX(-50%);
+  }
+}
+
 @media (prefers-reduced-motion: reduce) {
   .portfolio-btn,
   .nav-link,
@@ -120,5 +138,9 @@ body {
   .scroll-reveal {
     opacity: 1;
     transform: none;
+  }
+
+  .skills-marquee-track {
+    animation: none;
   }
 }
