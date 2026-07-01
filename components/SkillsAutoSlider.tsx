@@ -29,11 +29,11 @@ export default function SkillsAutoSlider({ skills }: SkillsAutoSliderProps) {
     <ScrollReveal className="mt-10">
       <div className="skills-marquee relative overflow-hidden py-1">
         <div
-          className="pointer-events-none absolute inset-y-0 left-0 z-10 w-10 bg-gradient-to-r from-black to-transparent sm:w-16"
+          className="pointer-events-none absolute inset-y-0 left-0 z-10 w-20 bg-gradient-to-r from-black/10 via-black/10 to-transparent sm:w-24"
           aria-hidden
         />
         <div
-          className="pointer-events-none absolute inset-y-0 right-0 z-10 w-10 bg-gradient-to-l from-black to-transparent sm:w-16"
+          className="pointer-events-none absolute inset-y-0 right-0 z-10 w-20 bg-gradient-to-l from-black/10 via-black/10 to-transparent sm:w-24"
           aria-hidden
         />
         <div className="skills-marquee-track flex w-max gap-4">

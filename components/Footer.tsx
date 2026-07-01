@@ -5,7 +5,7 @@ import FooterStatus from "./FooterStatus";
 
 export default function Footer() {
   return (
-    <footer className="border-t border-white/10 bg-black">
+    <footer className="border-t border-white/10 bg-black/95">
       <div className="mx-auto max-w-6xl px-6 py-16 sm:px-8 lg:px-10">
         <div className="grid gap-10 lg:grid-cols-4">
           <FooterBrand />

@@ -4,34 +4,34 @@ import SectionBackground from "./SectionBackground";
 
 const services = [
   {
-    title: "Company Profiles",
+    title: "Monitoring Systems",
     description:
-      "Website profil perusahaan yang elegan, cepat, dan fokus pada konversi.",
+      "Sensor integration and web dashboards for real-time facility monitoring.",
   },
   {
     title: "Landing Pages",
     description:
-      "Halaman promosi dengan struktur jelas untuk menangkap perhatian dan lead.",
+      "Promotional pages with clear structure designed to capture attention and generate leads.",
   },
   {
-    title: "Business Systems",
+    title: "Automation Systems",
     description:
-      "Aplikasi internal untuk mengelola alur kerja, data operasional, dan laporan.",
+      "Sensor-based automation prototypes for simplified operations and monitoring.",
   },
   {
     title: "Education Systems",
     description:
-      "Sistem sekolah atau LMS yang membantu administrasi dan akses informasi.",
+      "School solutions for communication, information sharing, and digital workflow.",
   },
   {
-    title: "E-Commerce Systems",
+    title: "E-Commerce Platforms",
     description:
-      "Platform jual-beli online yang rapi, aman, dan mudah digunakan.",
+      "Information and transaction platforms that streamline online buying and selling.",
   },
   {
     title: "IoT Development",
     description:
-      "Dashboard monitoring dan kontrol perangkat untuk solusi berbasis IoT.",
+      "Monitoring dashboards and device control interfaces for IoT solutions.",
   },
 ];
 
@@ -45,15 +45,15 @@ export default function ServicesSection() {
       <div className="relative z-10 mx-auto max-w-6xl">
       <SectionHeading
         eyebrow="Services"
-        title="Layanan yang bisa saya bantu bangun."
-        description="Struktur ini mengikuti referensi: kumpulan service card yang menjelaskan jenis pekerjaan atau produk yang dapat Anda tawarkan."
+        title="Services I can help build."
+        description="A service section designed as a set of cards to explain your offerings clearly."
       />
       <ScrollReveal className="mt-10 grid gap-5 md:grid-cols-2 xl:grid-cols-3">
         {services.map((service) => (
-          <article key={service.title} className="portfolio-card rounded-3xl p-6 transition hover:-translate-y-1 hover:shadow-[0_24px_60px_rgba(29,78,216,0.16)] cursor-pointer">
+          <article key={service.title} className="portfolio-card rounded-3xl p-6 transition-transform duration-300 hover:-translate-y-1 hover:shadow-hover cursor-pointer">
             <div className="mb-5 h-12 w-12 rounded-2xl bg-gradient-to-br from-orange-400 to-orange-600" />
             <h3 className="text-xl font-semibold text-white">{service.title}</h3>
-            <p className="mt-3 text-sm leading-6 text-white/75">
+            <p className="mt-3 text-sm leading-6 text-white/70">
               {service.description}
             </p>
           </article>

@@ -3,8 +3,8 @@ import type { ReactNode } from "react";
 import "./globals.css";
 
 export const metadata: Metadata = {
-  title: "Portfolio",
-  description: "Portfolio Next.js dengan Tailwind CSS",
+  title: "Akhmad Febriyo | Portfolio",
+  description: "Dark minimalist amber portfolio built with Next.js and Tailwind CSS.",
 };
 
 export default function RootLayout({
@@ -14,7 +14,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="id">
-      <body>{children}</body>
+      <body className="bg-black text-white antialiased">{children}</body>
     </html>
   );
 }
