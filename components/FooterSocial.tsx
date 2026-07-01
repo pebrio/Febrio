@@ -26,7 +26,7 @@ const socials = [
 export default function FooterSocial() {
   return (
     <div>
-      <h3 className="text-sm font-semibold uppercase tracking-[0.28em] text-white">
+      <h3 className="text-sm font-semibold uppercase tracking-[0.28em] text-white/90">
         Social
       </h3>
       <ul className="mt-5 space-y-3">
@@ -42,14 +42,14 @@ export default function FooterSocial() {
                 className="group flex items-center gap-3 text-sm text-white/60 transition hover:text-white"
               >
                 <span
-                  className={`flex h-8 w-8 items-center justify-center rounded-xl border border-white/10 bg-white/5 transition group-hover:border-white/15 group-hover:bg-white/8 ${
+                  className={`flex h-8 w-8 items-center justify-center rounded-xl border border-white/10 bg-white/5 transition group-hover:border-orange-400/30 group-hover:bg-white/10 ${
                     social.label === "GitHub"
-                      ? "text-white/80 group-hover:text-white"
+                      ? "text-orange-300 group-hover:text-orange-200"
                       : social.label === "LinkedIn"
-                        ? "text-sky-400 group-hover:text-sky-300"
+                        ? "text-orange-300 group-hover:text-orange-200"
                         : social.label === "Instagram"
-                          ? "text-pink-400 group-hover:text-pink-300"
-                          : "text-emerald-400 group-hover:text-emerald-300"
+                          ? "text-orange-300 group-hover:text-orange-200"
+                          : "text-orange-300 group-hover:text-orange-200"
                   }`}
                 >
                   <Icon className="h-3.5 w-3.5" />

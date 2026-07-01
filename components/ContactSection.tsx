@@ -43,13 +43,13 @@ function ContactLine({
   return (
     <a
       href={href}
-      className="group flex items-center gap-4 rounded-3xl border border-white/10 bg-white/[0.04] px-4 py-4 transition duration-300 hover:-translate-y-0.5 hover:border-orange-400/30 hover:bg-white/[0.06]"
+      className="group flex items-center gap-4 rounded-3xl border border-white/10 bg-white/5 bg-opacity-5 px-4 py-4 transition duration-300 hover:-translate-y-0.5 hover:border-orange-400/30 hover:bg-white/10"
     >
-      <span className="flex h-14 w-14 items-center justify-center rounded-full bg-[#171717] text-orange-400 shadow-[0_0_0_1px_rgba(255,255,255,0.05)] transition duration-300 group-hover:scale-105 group-hover:bg-[#1d1d1d] group-hover:text-orange-300">
+      <span className="flex h-14 w-14 items-center justify-center rounded-full bg-[#141414] text-orange-300 shadow-[0_0_0_1px_rgba(255,255,255,0.05)] transition duration-300 group-hover:scale-105 group-hover:bg-[#1a1a1a] group-hover:text-orange-200">
         <Icon className="h-6 w-6" />
       </span>
       <span>
-        <span className="block text-sm font-medium text-sky-300/75">{label}</span>
+        <span className="block text-sm font-medium text-orange-300/75">{label}</span>
         <span className="block text-lg font-semibold tracking-tight text-white">
           {value}
         </span>
@@ -73,7 +73,7 @@ function SocialButton({
       target="_blank"
       rel="noreferrer"
       aria-label={label}
-      className="flex h-12 w-12 items-center justify-center rounded-full border border-white/10 bg-[#181818] text-white/75 transition duration-300 hover:-translate-y-0.5 hover:border-white/20 hover:bg-[#222222] hover:text-white"
+      className="flex h-12 w-12 items-center justify-center rounded-full border border-white/10 bg-white/5 text-orange-300 transition duration-300 hover:-translate-y-0.5 hover:border-orange-400/30 hover:bg-white/10 hover:text-orange-200"
     >
       <Icon className="h-5 w-5" />
     </a>
@@ -90,8 +90,8 @@ export default function ContactSection() {
       <div className="relative z-10 mx-auto max-w-6xl">
         <SectionHeading
           eyebrow="Contact"
-          title="Mari terhubung untuk project berikutnya."
-          description="Hubungi saya lewat email atau telepon di sisi kiri, dan cek social media serta tombol aksi di sisi kanan."
+          title="Let's connect for your next project."
+          description="Reach out by email or phone on the left, and explore social links and action buttons on the right."
         />
 
         <ScrollReveal className="mt-10">
@@ -106,8 +106,8 @@ export default function ContactSection() {
               <ContactLine
                 icon={PhoneCall}
                 label="Call Me At"
-                value="085896192273"
-                href="tel:+6285896192273"
+                value="WhatsApp"
+                href="https://wa.me/6285896192273"
               />
             </div>
 
@@ -129,7 +129,7 @@ export default function ContactSection() {
 
               <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-1 xl:grid-cols-2">
                 <a
-                  href="#contact"
+                  href="https://wa.me/6285896192273"
                   className="portfolio-btn portfolio-btn-primary flex h-14 items-center justify-center rounded-2xl text-base"
                 >
                   Hire Me

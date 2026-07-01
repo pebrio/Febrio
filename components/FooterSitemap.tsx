@@ -10,7 +10,7 @@ const links = [
 export default function FooterSitemap() {
   return (
     <div>
-      <h3 className="text-sm font-semibold uppercase tracking-[0.28em] text-white">
+      <h3 className="text-sm font-semibold uppercase tracking-[0.28em] text-white/90">
         Sitemap
       </h3>
       <ul className="mt-5 space-y-3">

@@ -3,13 +3,13 @@ import SectionBackground from "./SectionBackground";
 import SkillsAutoSlider from "./SkillsAutoSlider";
 
 const skills = [
-  { name: "Laravel", category: "Backend" },
-  { name: "PHP", category: "Backend" },
-  { name: "React JS", category: "Frontend" },
-  { name: "MySQL", category: "Database" },
-  { name: "Tailwind CSS", category: "UI" },
-  { name: "Node.js", category: "Backend" },
-  { name: "Express JS", category: "Backend" },
+  { name: "IoT", category: "Arduino Uno" },
+  { name: "Embedded Systems", category: "Arduino Uno" },
+  { name: "Microsoft", category: "Administration" },
+  { name: "Microsoft Teams", category: "Administration" },
+  { name: "Automation", category: "Blynk IoT" },
+  { name: "Helpdesk", category: "ERP" },
+  { name: "Computer", category: "Troubleshooting" },
 ];
 
 export default function SkillsSection() {
@@ -22,8 +22,8 @@ export default function SkillsSection() {
       <div className="relative z-10 mx-auto max-w-6xl">
       <SectionHeading
         eyebrow="Skills"
-        title="Teknologi yang saya gunakan untuk membangun solusi."
-        description="Bagian ini menampilkan skill utama agar pengunjung cepat menangkap stack yang Anda kuasai."
+        title="Technologies I use to build solutions."
+        description="A selection of tools and technologies I use for building digital products."
       />
       <SkillsAutoSlider skills={skills} />
       </div>

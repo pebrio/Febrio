@@ -14,33 +14,33 @@ const experiences: ExperienceItem[] = [
   {
     title: "IT Helpdesk",
     company: "PT Tunas Dwipa Matra",
-    period: "April - Juli 2026",
+    period: "April - July 2026",
     summary:
-      "Menyediakan dukungan teknis operasional, mengelola sistem ERP Odoo 18, serta melakukan pengujian aplikasi Teds 2.0 hingga penyusunan laporan UAT guna memastikan kelancaran proses bisnis dan efektivitas alur kerja pengguna.",
+      "Provided operational technical support, managed Odoo 18 ERP systems, and conducted Teds 2.0 testing with UAT reporting to ensure smooth business operations and efficient workflows.",
     icon: "globe",
   },
   {
     title: "Housekeeping",
     company: "20 Kopi+",
-    period: "Oktober - Desember 2025",
+    period: "October - December 2025",
     summary:
-      "Menjaga standar kebersihan, kerapian, dan kenyamanan fasilitas operasional serta memberikan pelayanan prima untuk memastikan kepuasan pelanggan di area kerja.",
+      "Maintained cleanliness, organization, and comfort across operational facilities while providing excellent service to ensure customer satisfaction.",
     icon: "tech",
   },
   {
-    title: "Asisten Dosen Fakultas",
+    title: "Faculty Teaching Assistant",
     company: "Universitas Teknokrat Indonesia",
-    period: "Otober 2024 - Maret 2026",
+    period: "October 2024 - March 2026",
     summary:
-      "Mendampingi praktikum pemrograman, jaringan, dan IoT, memberikan dukungan teknis perangkat keras/lunak, serta mengelola administrasi dan penilaian laboratorium.",
+      "Assisted programming, networking, and IoT labs while providing hardware/software technical support and managing lab administration and grading.",
     icon: "briefcase",
   },
   {
-    title: "Kampus Mengajar Angkatan 7",
+    title: "Kampus Mengajar Batch 7",
     company: "Kemendikbud Ristek",
-    period: "Maret - Agustus 2024",
+    period: "March - August 2024",
     summary:
-      "Berkontribusi dalam program Kampus Mengajar Angkatan 7 dengan mengintegrasikan teknologi melalui pembuatan sistem bel otomatis berbasis sistem tertanam, pengembangan website sekolah, serta pengembangan media pembelajaran interaktif untuk meningkatkan literasi dan numerasi siswa.",
+      "Contributed to the Kampus Mengajar Batch 7 program by integrating technology with an automated bell system, school website development, and interactive learning media to improve student literacy and numeracy.",
     icon: "education",
   },
 ];
@@ -150,9 +150,9 @@ export default function ExperienceSection() {
       <SectionBackground />
       <div className="relative z-10 mx-auto max-w-6xl">
         <SectionHeading
-          eyebrow="Pengalaman Kerja dan Magang"
-          title="Pengalaman Kerja dan Magang"
-          description="Desain vertical timeline dengan kartu bergantian di kiri dan kanan garis tengah."
+          eyebrow="Experience"
+          title="Work and Internship Experience"
+          description="A vertical timeline layout with alternating cards on both sides of the center line."
         />
 
         <div className="relative mt-14">
@@ -170,12 +170,12 @@ export default function ExperienceSection() {
                         isLeft ? "md:justify-center" : "md:justify-center"
                       }`}
                     >
-                      <div className="flex h-10 w-10 items-center justify-center rounded-full border border-orange-400/30 bg-black/80 shadow-[0_0_0_6px_rgba(249,115,22,0.06),0_0_30px_rgba(249,115,22,0.14)]">
+                      <div className="flex h-10 w-10 items-center justify-center rounded-full border border-orange-400/30 bg-white/5 shadow-[0_0_0_6px_rgba(249,115,22,0.06),0_0_30px_rgba(249,115,22,0.14)]">
                         <TimelineIcon type={item.icon} />
                       </div>
                     </div>
 
-                    <div className="md:col-start-1 md:row-start-1 md:pr-10">
+                    <div className="hidden md:block md:col-start-1 md:row-start-1 md:pr-10">
                       {isLeft ? (
                         <article className="portfolio-card rounded-3xl p-6 md:ml-auto md:max-w-xl">
                           <div className="flex flex-wrap items-start justify-between gap-4">

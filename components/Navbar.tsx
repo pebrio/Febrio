@@ -27,19 +27,19 @@ export default function Navbar() {
   }, []);
 
   return (
-    <header className="sticky top-0 z-50 border-b border-white/10 bg-black/70 backdrop-blur-xl">
-      <div className="mx-auto flex max-w-6xl items-center gap-4 px-6 py-4 sm:px-8 lg:px-10">
-        <a href="#home" className="text-base font-black tracking-[0.2em] text-white">
-          PORTFOLIO
+    <header className="sticky top-0 z-50 border-b border-white/10 bg-black/80 backdrop-blur-2xl">
+      <div className="mx-auto flex max-w-6xl items-center gap-3 px-6 py-3 sm:px-8 lg:px-10">
+        <a href="#home" className="text-sm font-black tracking-[0.28em] uppercase text-white">
+          FEBRIYO
         </a>
-        <nav className="ml-auto hidden items-center gap-6 md:flex">
+        <nav className="ml-auto hidden items-center gap-3 md:flex">
           {navItems.map((item) => (
             <a
               key={item.href}
               href={item.href}
               onClick={() => setActive(item.href)}
-              className={`nav-link text-sm font-medium ${
-                active === item.href ? "nav-link-active font-semibold" : "text-white/70"
+              className={`nav-link text-[11px] font-semibold uppercase tracking-[0.18em] transition ${
+                active === item.href ? "nav-link-active" : "text-white/60"
               }`}
             >
               {item.label}

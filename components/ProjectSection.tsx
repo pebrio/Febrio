@@ -4,16 +4,16 @@ import SectionBackground from "./SectionBackground";
 
 const projects = [
   {
-    name: "Sistem Monitoring Berbasis IoT Menggunakan Blynk",
-    description: "Sistem informasi keuangan bisnis dengan dashboard, transaksi, dan laporan terintegrasi.",
+    name: "IoT-Based Room Monitoring System Using Blynk",
+    description: "Developed a room attendance and facility control monitoring system using Blynk, capable of tracking entry/exit counts, displaying real-time sensor distances, and managing electrical devices like lights and fans automatically.",
   },
   {
-    name: "Perancangan Sistem Pendeteksi Asap Rokok Menggunakan Citra Digital Berbasis AIoT",
-    description: "Perancangan sistem AIoT untuk mendeteksi asap rokok melalui sinergi antara sensor gas MQ-137 dan analisis citra digital guna mendukung otomatisasi pemantauan pada tempat umum seperti Mall, Are pendidikan.",
+    name: "AIoT Smoke Detection System with Digital Image Analysis",
+    description: "Designed an AIoT smoke detection solution using MQ-137 gas sensors and digital image analysis to automate monitoring in public spaces such as malls and educational facilities.",
   },
   {
-    name: "Smartfert",
-    description: "Mengembangkan sistem monitoring kehadiran dan kontrol fasilitas ruangan berbasis IoT menggunakan platform Blynk, yang mampu melacak jumlah mahasiswa masuk/keluar, memantau jarak sensor secara real-time, serta mengendalikan status perangkat listrik seperti lampu dan kipas secara otomatis.",
+    name: "SMP 11 Maret Sumberagung Website",
+    description: "Built a WordPress school website for SMP 11 Maret Sumberagung to share academic information, school activities, and communication between teachers, students, and parents.",
   },
 ];
 
@@ -27,18 +27,18 @@ export default function ProjectSection() {
       <div className="relative z-10 mx-auto max-w-6xl">
         <SectionHeading
           eyebrow="Featured Projects"
-          title="Project unggulan yang paling merepresentasikan kemampuan saya."
-          description="Bagian ini mengikuti referensi dengan tampilan project yang lebih menonjol dan informatif."
+          title="Top projects that best showcase my skills."
+          description="A refined layout designed to highlight standout work with informative project details."
         />
         <ScrollReveal className="mt-10 grid gap-6 md:grid-cols-2 xl:grid-cols-3">
           {projects.map((project) => (
             <article
               key={project.name}
-              className="portfolio-card group flex h-full flex-col rounded-3xl p-6 transition hover:-translate-y-1 hover:shadow-[0_24px_60px_rgba(29,78,216,0.16)]"
+              className="portfolio-card group flex h-full flex-col rounded-3xl p-6 transition-transform duration-300 hover:-translate-y-1 hover:shadow-hover"
             >
               <div className="mb-6 h-40 rounded-2xl bg-gradient-to-br from-orange-500/20 via-white/10 to-transparent" />
               <h3 className="text-xl font-semibold text-white">{project.name}</h3>
-              <p className="mt-3 text-sm leading-6 text-white/75">
+              <p className="mt-3 text-sm leading-6 text-white/70">
                 {project.description}
               </p>
               <a
