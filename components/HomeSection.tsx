@@ -92,7 +92,7 @@ export default function HomeSection() {
               <div className="relative rounded-[1.6rem] overflow-hidden border border-white/10">
                 <div className="relative aspect-[4/5] w-full overflow-hidden">
                   <Image
-                    src="/images/profile.png"
+                    src="/Febrio/images/profile.png"
                     alt="Akhmad Febriyo Febriyansyah"
                     fill
                     priority
