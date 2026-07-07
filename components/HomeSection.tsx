@@ -2,6 +2,7 @@ import Image from "next/image";
 import ScrollReveal from "./ScrollReveal";
 import AnimatedCounter from "./AnimatedCounter";
 import ShapeGrid from "./ShapeGrid";
+import MusicPlayer from "./MusicPlayer";
 
 export default function HomeSection() {
   const stats = [
@@ -60,6 +61,13 @@ export default function HomeSection() {
             >
               View Projects
             </a>
+          </div>
+          <div className="mt-5">
+            <MusicPlayer
+              src="/Febrio/music/Evry.mp3"
+              title="Evry"
+              artist="Background Music"
+            />
           </div>
           {/* <div className="mt-8 flex flex-wrap gap-3 text-sm text-white/70">
             <a className="transition hover:text-orange-300" href="https://github.com/pebrio" target="_blank" rel="noreferrer">
