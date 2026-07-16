@@ -1,3 +1,4 @@
+import Link from "next/link";
 import SectionHeading from "./SectionHeading";
 import ScrollReveal from "./ScrollReveal";
 import SectionBackground from "./SectionBackground";
@@ -52,15 +53,15 @@ export default function ProjectSection() {
               <p className="mt-3 text-sm leading-6 text-white/70">
                 {project.description}
               </p>
-              <a
-                href="#contact"
+              <Link
+                href="/contact"
                 className="mt-auto inline-flex items-center gap-3 pt-8 text-sm font-semibold text-white transition group-hover:text-orange-300"
               >
                 View Details
                 <span className="text-2xl leading-none transition-transform duration-300 group-hover:translate-x-1">
                   →
                 </span>
-              </a>
+              </Link>
             </article>
           ))}
         </ScrollReveal>
@@ -68,3 +69,4 @@ export default function ProjectSection() {
     </section>
   );
 }
+

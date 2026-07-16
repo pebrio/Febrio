@@ -1,7 +1,7 @@
 import Image from "next/image";
+import Link from "next/link";
 import ScrollReveal from "./ScrollReveal";
 import AnimatedCounter from "./AnimatedCounter";
-import ShapeGrid from "./ShapeGrid";
 import MusicPlayer from "./MusicPlayer";
 
 export default function HomeSection() {
@@ -13,20 +13,8 @@ export default function HomeSection() {
 
   return (
     <section id="home" className="relative overflow-hidden scroll-mt-28">
-      <div className="absolute inset-0 z-0">
-        <ShapeGrid
-          direction="diagonal"
-          speed={0.18}
-          squareSize={34}
-          borderColor="rgba(255,255,255,0.16)"
-          hoverFillColor="rgba(249,115,22,0.22)"
-          shape="hexagon"
-          hoverTrailAmount={4}
-          className="opacity-70 mix-blend-screen"
-        />
-      </div>
-      <div className="absolute inset-0 z-0 bg-[radial-gradient(circle_at_top,rgba(249,115,22,0.12),transparent_28%),radial-gradient(circle_at_bottom_right,rgba(255,255,255,0.08),transparent_35%),linear-gradient(180deg,rgba(0,0,0,0.72)_0%,rgba(0,0,0,0.58)_50%,rgba(0,0,0,0.9)_100%)]" />
       <div className="relative z-10 mx-auto grid min-h-[calc(100vh-12rem)] max-w-6xl items-stretch gap-12 px-6 py-24 lg:grid-cols-[1.2fr_0.8fr] lg:px-10">
+
         <ScrollReveal className="relative max-w-3xl h-full flex flex-col justify-between">
           <p className="mb-5 inline-flex rounded-full border border-orange-400/20 bg-white/5 px-4 py-2 text-sm font-semibold uppercase tracking-[0.28em] text-orange-300 shadow-[0_8px_20px_rgba(245,158,11,0.12)] backdrop-blur">
             Available for Projects
@@ -55,13 +43,14 @@ export default function HomeSection() {
             {/* <a href="#contact" className="portfolio-btn portfolio-btn-secondary">
               Contact Me
             </a> */}
-            <a
-              href="#projects"
+            <Link
+              href="/project"
               className="portfolio-btn portfolio-btn-secondary"
             >
               View Projects
-            </a>
+            </Link>
           </div>
+
           <div className="mt-5">
             <MusicPlayer
               src="/Febrio/music/Evry.mp3"
