@@ -8,6 +8,9 @@ import ShapeGrid from "@/components/ShapeGrid";
 export const metadata: Metadata = {
   title: "Akhmad Febriyo | Portfolio",
   description: "Dark minimalist amber portfolio built with Next.js and Tailwind CSS.",
+  icons: {
+    icon: "/user.png",
+  },
 };
 
 export default function RootLayout({

@@ -19,6 +19,11 @@ const projects = [
     description: "Built a WordPress school website for SMP 11 Maret Sumberagung to share academic information, school activities, and communication between teachers, students, and parents.",
     image: "/Febrio/images/Smp11-Maret.png",
   },
+  {
+    name: "Smart Roaster Berbasis IoT",
+    description: "Smart Coffee Roasting Monitoring System: Developing a microcontroller-based IoT system to optimize coffee roasting machines. This project integrates thermocouple sensors for precise temperature control and MQ135 sensors for monitoring smoke density levels, aiming to enhance production quality standards at the micro-enterprise scale.",
+    image: "",
+  },
 ];
 
 export default function ProjectSection() {
@@ -34,7 +39,7 @@ export default function ProjectSection() {
           title="Top projects that best showcase my skills."
           description="A refined layout designed to highlight standout work with informative project details."
         />
-        <ScrollReveal className="mt-10 grid gap-6 md:grid-cols-2 xl:grid-cols-3">
+        <ScrollReveal className="mt-10 grid gap-6 md:grid-cols-2">
           {projects.map((project) => (
             <article
               key={project.name}
@@ -54,7 +59,7 @@ export default function ProjectSection() {
                 {project.description}
               </p>
               <Link
-                href="/contact"
+                href="/project"
                 className="mt-auto inline-flex items-center gap-3 pt-8 text-sm font-semibold text-white transition group-hover:text-orange-300"
               >
                 View Details
