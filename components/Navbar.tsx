@@ -1,9 +1,10 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { Menu, X } from "lucide-react";
+import { getProjectAccessRole, setProjectAccessRole, isProjectAdmin } from "@/lib/projectAccess";
 
 const navItems = [
   { label: "Home", href: "/" },
@@ -18,6 +19,33 @@ const navItems = [
 export default function Navbar() {
   const pathname = usePathname();
   const [isOpen, setIsOpen] = useState(false);
+  const [loggedIn, setLoggedIn] = useState(false);
+  const isProjectPage = pathname.includes("/project");
+  const isLoginPage = pathname === "/login";
+
+  useEffect(() => {
+    const syncAccess = () => {
+      setLoggedIn(isProjectAdmin(getProjectAccessRole()));
+    };
+
+    syncAccess();
+    window.addEventListener("storage", syncAccess);
+    window.addEventListener("projectAccessChanged", syncAccess);
+    return () => {
+      window.removeEventListener("storage", syncAccess);
+      window.removeEventListener("projectAccessChanged", syncAccess);
+    };
+  }, []);
+
+  if (isLoginPage) {
+    return null;
+  }
+
+  const handleLogout = () => {
+    setProjectAccessRole("guest");
+    setLoggedIn(false);
+    window.dispatchEvent(new Event("projectAccessChanged"));
+  };
 
   return (
     <header className="sticky top-0 z-50 border-b border-white/10 bg-black/80 backdrop-blur-2xl">
@@ -41,6 +69,25 @@ export default function Navbar() {
             );
           })}
         </nav>
+        {isProjectPage && (
+          <div className="hidden md:flex items-center gap-2 ml-4 pl-4 border-l border-white/10">
+            {loggedIn ? (
+              <button
+                onClick={handleLogout}
+                className="text-xs font-semibold uppercase tracking-[0.18em] text-orange-400 px-4 py-2 rounded-lg border border-orange-400/30 hover:bg-orange-400/10 transition"
+              >
+                Logout
+              </button>
+            ) : (
+              <Link
+                href="/login"
+                className="text-xs font-semibold uppercase tracking-[0.18em] text-white px-4 py-2 rounded-lg bg-orange-400 hover:bg-orange-500 transition"
+              >
+                Admin Login
+              </Link>
+            )}
+          </div>
+        )}
         <button
           onClick={() => setIsOpen(!isOpen)}
           className="ml-auto flex h-9 w-9 items-center justify-center rounded-xl border border-white/10 bg-white/5 text-white/80 transition hover:bg-white/10 hover:text-white md:hidden"
@@ -69,6 +116,29 @@ export default function Navbar() {
                 </Link>
               );
             })}
+            {isProjectPage && (
+              <div className="space-y-2 py-3 border-t border-white/10 pt-4 mt-2">
+                {loggedIn ? (
+                  <button
+                    onClick={() => {
+                      handleLogout();
+                      setIsOpen(false);
+                    }}
+                    className="text-xs font-semibold uppercase tracking-[0.18em] text-orange-400 px-4 py-2 rounded-lg border border-orange-400/30 hover:bg-orange-400/10 transition w-full"
+                  >
+                    Logout
+                  </button>
+                ) : (
+                  <Link
+                    href="/login"
+                    onClick={() => setIsOpen(false)}
+                    className="text-xs font-semibold uppercase tracking-[0.18em] text-white px-4 py-2 rounded-lg bg-orange-400 hover:bg-orange-500 transition w-full"
+                  >
+                    Admin Login
+                  </Link>
+                )}
+              </div>
+            )}
           </nav>
         </div>
       )}

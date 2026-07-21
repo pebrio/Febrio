@@ -370,3 +370,273 @@ body {
   100% { transform: scaleY(1.4); }
 }
 
+/* ============================
+   PROJECT MANAGER
+   ============================ */
+
+/* ── Card ──────────────────────────────────── */
+.pm-card {
+  background: var(--bg-surface);
+  border: 1px solid var(--border-subtle);
+  backdrop-filter: blur(12px);
+}
+
+.pm-card-placeholder {
+  background: linear-gradient(135deg, rgba(245,158,11,0.06), rgba(255,255,255,0.03));
+}
+
+/* ── Buttons ────────────────────────────────── */
+.pm-btn-primary {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--accent);
+  color: #000;
+  font-weight: 600;
+  border: none;
+  cursor: pointer;
+  transition: background 200ms ease, transform 150ms ease, box-shadow 200ms ease;
+}
+.pm-btn-primary:hover {
+  background: var(--accent-dark);
+  transform: translateY(-1px);
+  box-shadow: 0 4px 16px rgba(245,158,11,0.3);
+}
+.pm-btn-primary:active { transform: translateY(0); }
+
+.pm-btn-secondary {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  background: transparent;
+  color: var(--text-secondary);
+  border: 1px solid var(--border-strong);
+  font-weight: 500;
+  cursor: pointer;
+  transition: background 200ms ease, color 150ms ease, border-color 150ms ease;
+}
+.pm-btn-secondary:hover {
+  background: rgba(255,255,255,0.06);
+  color: #fff;
+  border-color: rgba(255,255,255,0.2);
+}
+
+.pm-btn-danger {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(239,68,68,0.12);
+  color: #f87171;
+  border: 1px solid rgba(239,68,68,0.2);
+  font-weight: 500;
+  cursor: pointer;
+  transition: background 200ms ease, color 150ms ease;
+}
+.pm-btn-danger:hover {
+  background: rgba(239,68,68,0.22);
+  color: #fca5a5;
+}
+
+/* ── Badges ─────────────────────────────────── */
+.pm-badge {
+  display: inline-flex;
+  align-items: center;
+  padding: 2px 10px;
+  border-radius: 999px;
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.02em;
+}
+
+.pm-badge-category {
+  background: rgba(245,158,11,0.12);
+  color: var(--accent);
+  border: 1px solid rgba(245,158,11,0.2);
+}
+
+.pm-badge-status { border: 1px solid transparent; }
+.pm-badge-severity { border: 1px solid transparent; }
+
+/* Status colors */
+.status-planning    { background: rgba(139,92,246,0.15); color: #c4b5fd; border-color: rgba(139,92,246,0.25); }
+.status-inprogress  { background: rgba(59,130,246,0.15); color: #93c5fd; border-color: rgba(59,130,246,0.25); }
+.status-completed   { background: rgba(34,197,94,0.15);  color: #86efac; border-color: rgba(34,197,94,0.25); }
+.status-onhold      { background: rgba(234,179,8,0.15);  color: #fde047; border-color: rgba(234,179,8,0.25); }
+.status-cancelled   { background: rgba(239,68,68,0.12);  color: #fca5a5; border-color: rgba(239,68,68,0.2); }
+
+/* Work item status colors */
+.work-todo        { color: rgba(255,255,255,0.35); }
+.work-inprogress  { color: #93c5fd; }
+.work-done        { color: #86efac; }
+
+/* Severity colors */
+.severity-low      { background: rgba(34,197,94,0.12);  color: #86efac; border-color: rgba(34,197,94,0.2); }
+.severity-medium   { background: rgba(234,179,8,0.12);  color: #fde047; border-color: rgba(234,179,8,0.2); }
+.severity-high     { background: rgba(249,115,22,0.15); color: #fdba74; border-color: rgba(249,115,22,0.25); }
+.severity-critical { background: rgba(239,68,68,0.18);  color: #fca5a5; border-color: rgba(239,68,68,0.3); }
+
+/* ── Tags ───────────────────────────────────── */
+.pm-tag {
+  display: inline-flex;
+  align-items: center;
+  padding: 2px 8px;
+  border-radius: 6px;
+  font-size: 11px;
+  font-weight: 500;
+  background: rgba(255,255,255,0.07);
+  color: rgba(255,255,255,0.55);
+  border: 1px solid rgba(255,255,255,0.08);
+}
+
+/* ── Progress ───────────────────────────────── */
+.pm-progress-track {
+  width: 100%;
+  height: 5px;
+  background: rgba(255,255,255,0.08);
+  border-radius: 999px;
+  overflow: hidden;
+}
+.pm-progress-fill {
+  height: 100%;
+  background: linear-gradient(90deg, var(--accent-dark), var(--accent));
+  border-radius: 999px;
+  transition: width 600ms ease;
+  min-width: 0;
+}
+
+/* ── Tabs ───────────────────────────────────── */
+.pm-tab {
+  display: inline-flex;
+  align-items: center;
+  padding: 10px 16px;
+  font-size: 13px;
+  font-weight: 500;
+  color: rgba(255,255,255,0.45);
+  border-bottom: 2px solid transparent;
+  border-radius: 8px 8px 0 0;
+  cursor: pointer;
+  transition: color 150ms ease, border-color 150ms ease, background 150ms ease;
+  white-space: nowrap;
+}
+.pm-tab:hover { color: rgba(255,255,255,0.75); background: rgba(255,255,255,0.04); }
+.pm-tab-active {
+  color: var(--accent);
+  border-bottom-color: var(--accent);
+  background: rgba(245,158,11,0.05);
+}
+
+/* Sub-tab bar */
+.pm-tab-bar {
+  background: rgba(255,255,255,0.04);
+  border: 1px solid var(--border-subtle);
+}
+.pm-subtab {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 7px 14px;
+  font-size: 12px;
+  font-weight: 500;
+  color: rgba(255,255,255,0.45);
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background 150ms ease, color 150ms ease;
+}
+.pm-subtab:hover { background: rgba(255,255,255,0.07); color: #fff; }
+.pm-subtab-active { background: rgba(245,158,11,0.15); color: var(--accent); font-weight: 600; }
+
+/* ── Filter Buttons ─────────────────────────── */
+.pm-filter-btn {
+  display: inline-flex;
+  align-items: center;
+  padding: 4px 12px;
+  border-radius: 999px;
+  font-size: 12px;
+  font-weight: 500;
+  color: rgba(255,255,255,0.5);
+  background: rgba(255,255,255,0.05);
+  border: 1px solid rgba(255,255,255,0.08);
+  cursor: pointer;
+  transition: background 150ms ease, color 150ms ease, border-color 150ms ease;
+}
+.pm-filter-btn:hover {
+  background: rgba(255,255,255,0.1);
+  color: rgba(255,255,255,0.8);
+}
+.pm-filter-btn-active {
+  background: rgba(245,158,11,0.15);
+  color: var(--accent);
+  border-color: rgba(245,158,11,0.3);
+  font-weight: 600;
+}
+
+/* ── Count Badge ────────────────────────────── */
+.pm-count-badge {
+  display: inline-flex;
+  align-items: center;
+  padding: 0 5px;
+  border-radius: 999px;
+  font-size: 10px;
+  font-weight: 700;
+  background: rgba(255,255,255,0.1);
+  color: rgba(255,255,255,0.6);
+  min-width: 16px;
+  justify-content: center;
+}
+
+/* ── Form Inputs ────────────────────────────── */
+.pm-field { display: flex; flex-direction: column; gap: 6px; }
+.pm-label {
+  font-size: 12px;
+  font-weight: 600;
+  color: rgba(255,255,255,0.6);
+  letter-spacing: 0.02em;
+}
+
+.pm-input {
+  background: rgba(255,255,255,0.05);
+  border: 1px solid rgba(255,255,255,0.1);
+  border-radius: 10px;
+  padding: 10px 14px;
+  font-size: 13px;
+  color: #fff;
+  font-family: inherit;
+  outline: none;
+  transition: border-color 200ms ease, background 200ms ease;
+  width: 100%;
+  resize: vertical;
+}
+.pm-input::placeholder { color: rgba(255,255,255,0.25); }
+.pm-input:focus {
+  border-color: rgba(245,158,11,0.5);
+  background: rgba(255,255,255,0.07);
+  box-shadow: 0 0 0 3px rgba(245,158,11,0.08);
+}
+.pm-input-error { border-color: rgba(239,68,68,0.5) !important; }
+.pm-input option { background: #111; color: #fff; }
+
+.pm-error-msg { font-size: 11px; color: #fca5a5; margin-top: 2px; }
+
+/* ── Work status button ─────────────────────── */
+.work-status-btn {
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 0;
+  line-height: 1;
+  transition: transform 150ms ease, opacity 150ms ease;
+}
+.work-status-btn:hover { transform: scale(1.2); opacity: 0.8; }
+
+/* ── Spinner ────────────────────────────────── */
+.pm-spinner {
+  width: 32px;
+  height: 32px;
+  border: 3px solid rgba(245,158,11,0.15);
+  border-top-color: var(--accent);
+  border-radius: 50%;
+  animation: pm-spin 0.7s linear infinite;
+}
+@keyframes pm-spin {
+  to { transform: rotate(360deg); }
+}

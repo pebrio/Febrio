@@ -5,21 +5,25 @@ import SectionBackground from "./SectionBackground";
 
 const projects = [
   {
+    id: "iot-room-monitoring",
     name: "IoT-Based Room Monitoring System Using Blynk",
     description: "Developed a room attendance and facility control monitoring system using Blynk, capable of tracking entry/exit counts, displaying real-time sensor distances, and managing electrical devices like lights and fans automatically.",
     image: "/Febrio/images/Smart-Monitoring.jpeg",
   },
   {
+    id: "aiot-smoke-detection",
     name: "AIoT Smoke Detection System with Digital Image Analysis",
     description: "Designed an AIoT smoke detection solution using MQ-137 gas sensors and digital image analysis to automate monitoring in public spaces such as malls and educational facilities.",
     image: "/Febrio/images/AloT.jpeg",
   },
   {
+    id: "smp11-website",
     name: "SMP 11 Maret Sumberagung Website",
     description: "Built a WordPress school website for SMP 11 Maret Sumberagung to share academic information, school activities, and communication between teachers, students, and parents.",
     image: "/Febrio/images/Smp11-Maret.png",
   },
   {
+    id: "smart-roaster-iot",
     name: "Smart Roaster Berbasis IoT",
     description: "Smart Coffee Roasting Monitoring System: Developing a microcontroller-based IoT system to optimize coffee roasting machines. This project integrates thermocouple sensors for precise temperature control and MQ135 sensors for monitoring smoke density levels, aiming to enhance production quality standards at the micro-enterprise scale.",
     image: "",
@@ -58,20 +62,37 @@ export default function ProjectSection() {
               <p className="mt-3 text-sm leading-6 text-white/70">
                 {project.description}
               </p>
-              <Link
-                href="/project"
-                className="mt-auto inline-flex items-center gap-3 pt-8 text-sm font-semibold text-white transition group-hover:text-orange-300"
-              >
-                View Details
-                <span className="text-2xl leading-none transition-transform duration-300 group-hover:translate-x-1">
-                  →
-                </span>
-              </Link>
+              <div className="mt-auto flex items-center gap-4 pt-8">
+                <Link
+                  href={`/project/${project.id}`}
+                  className="inline-flex items-center gap-3 text-sm font-semibold text-white transition group-hover:text-orange-300"
+                >
+                  View Details
+                  <span className="text-2xl leading-none transition-transform duration-300 group-hover:translate-x-1">
+                    →
+                  </span>
+                </Link>
+                <Link
+                  href="/project"
+                  className="text-xs text-white/40 hover:text-white/70 transition-colors"
+                >
+                  All Projects
+                </Link>
+              </div>
             </article>
           ))}
         </ScrollReveal>
+
+        {/* CTA to Project Manager */}
+        <div className="mt-8 text-center">
+          <Link
+            href="/project"
+            className="portfolio-btn portfolio-btn-secondary inline-flex items-center gap-1"
+          >
+            Lihat Semua Project & Detail Lengkap
+          </Link>
+        </div>
       </div>
     </section>
   );
 }
-
