@@ -1,8 +1,9 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { Project, Severity, SEVERITY_LABELS, SEVERITY_COLORS } from "@/lib/projectTypes";
 import { useProjectStore } from "@/lib/projectStore";
+import { getProjectAccessRole, isProjectAdmin } from "@/lib/projectAccess";
 
 interface ProblemTabProps {
   project: Project;
@@ -16,6 +17,18 @@ export default function ProblemTab({ project, onUpdate }: ProblemTabProps) {
   const [showProblemForm, setShowProblemForm] = useState(false);
   const [showSolutionForm, setShowSolutionForm] = useState<string | null>(null); // problemId or "general"
   const [activeTab, setActiveTab] = useState<"problems" | "solutions">("problems");
+  const [canManage, setCanManage] = useState(false);
+
+  useEffect(() => {
+    setCanManage(isProjectAdmin(getProjectAccessRole()));
+    const syncAccess = () => setCanManage(isProjectAdmin(getProjectAccessRole()));
+    window.addEventListener("storage", syncAccess);
+    window.addEventListener("projectAccessChanged", syncAccess);
+    return () => {
+      window.removeEventListener("storage", syncAccess);
+      window.removeEventListener("projectAccessChanged", syncAccess);
+    };
+  }, []);
 
   // Problem form state
   const [pTitle, setPTitle] = useState("");
@@ -110,12 +123,14 @@ export default function ProblemTab({ project, onUpdate }: ProblemTabProps) {
             <p className="text-xs text-white/50">
               {openProblems.length} masalah terbuka · {resolvedProblems.length} diselesaikan
             </p>
-            <button
-              onClick={() => setShowProblemForm(true)}
-              className="pm-btn-primary text-sm py-2 px-4 rounded-xl"
-            >
-              + Tambah Masalah
-            </button>
+            {canManage && (
+              <button
+                onClick={() => setShowProblemForm(true)}
+                className="pm-btn-primary text-sm py-2 px-4 rounded-xl"
+              >
+                + Tambah Masalah
+              </button>
+            )}
           </div>
 
           {/* Add Problem Form */}
@@ -233,12 +248,14 @@ export default function ProblemTab({ project, onUpdate }: ProblemTabProps) {
         <div className="space-y-4">
           <div className="flex justify-between items-center">
             <p className="text-xs text-white/50">{project.solutions.length} solusi dicatat</p>
-            <button
-              onClick={() => setShowSolutionForm("general")}
-              className="pm-btn-primary text-sm py-2 px-4 rounded-xl"
-            >
-              + Tambah Solusi
-            </button>
+            {canManage && (
+              <button
+                onClick={() => setShowSolutionForm("general")}
+                className="pm-btn-primary text-sm py-2 px-4 rounded-xl"
+              >
+                + Tambah Solusi
+              </button>
+            )}
           </div>
 
           {/* Add Solution Form */}

@@ -1,8 +1,9 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { Project, WorkItem, WorkItemStatus } from "@/lib/projectTypes";
 import { useProjectStore } from "@/lib/projectStore";
+import { getProjectAccessRole, isProjectAdmin } from "@/lib/projectAccess";
 
 interface WorkTabProps {
   project: Project;
@@ -39,6 +40,18 @@ export default function WorkTab({ project, onUpdate }: WorkTabProps) {
   const [newTitle, setNewTitle] = useState("");
   const [newDesc, setNewDesc] = useState("");
   const [filter, setFilter] = useState<WorkItemStatus | "all">("all");
+  const [canManage, setCanManage] = useState(false);
+
+  useEffect(() => {
+    setCanManage(isProjectAdmin(getProjectAccessRole()));
+    const syncAccess = () => setCanManage(isProjectAdmin(getProjectAccessRole()));
+    window.addEventListener("storage", syncAccess);
+    window.addEventListener("projectAccessChanged", syncAccess);
+    return () => {
+      window.removeEventListener("storage", syncAccess);
+      window.removeEventListener("projectAccessChanged", syncAccess);
+    };
+  }, []);
 
   const filtered =
     filter === "all"
@@ -114,12 +127,14 @@ export default function WorkTab({ project, onUpdate }: WorkTabProps) {
             </button>
           ))}
         </div>
-        <button
-          onClick={() => setShowForm(true)}
-          className="pm-btn-primary text-sm py-2 px-4 rounded-xl"
-        >
-          + Tambah Task
-        </button>
+        {canManage && (
+          <button
+            onClick={() => setShowForm(true)}
+            className="pm-btn-primary text-sm py-2 px-4 rounded-xl"
+          >
+            + Tambah Task
+          </button>
+        )}
       </div>
 
       {/* Add Form */}

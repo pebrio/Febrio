@@ -1,8 +1,9 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { Project } from "@/lib/projectTypes";
 import { useProjectStore } from "@/lib/projectStore";
+import { getProjectAccessRole, isProjectAdmin } from "@/lib/projectAccess";
 
 interface DocTabProps {
   project: Project;
@@ -17,6 +18,18 @@ export default function DocTab({ project, onUpdate }: DocTabProps) {
   const [title, setTitle] = useState("");
   const [content, setContent] = useState("");
   const [filterType, setFilterType] = useState<"all" | "note" | "link">("all");
+  const [canManage, setCanManage] = useState(false);
+
+  useEffect(() => {
+    setCanManage(isProjectAdmin(getProjectAccessRole()));
+    const syncAccess = () => setCanManage(isProjectAdmin(getProjectAccessRole()));
+    window.addEventListener("storage", syncAccess);
+    window.addEventListener("projectAccessChanged", syncAccess);
+    return () => {
+      window.removeEventListener("storage", syncAccess);
+      window.removeEventListener("projectAccessChanged", syncAccess);
+    };
+  }, []);
 
   const filtered =
     filterType === "all"
@@ -69,12 +82,14 @@ export default function DocTab({ project, onUpdate }: DocTabProps) {
             </button>
           ))}
         </div>
-        <button
-          onClick={() => setShowForm(true)}
-          className="pm-btn-primary text-sm py-2 px-4 rounded-xl"
-        >
-          + Tambah Dokumentasi
-        </button>
+        {canManage && (
+          <button
+            onClick={() => setShowForm(true)}
+            className="pm-btn-primary text-sm py-2 px-4 rounded-xl"
+          >
+            + Tambah Dokumentasi
+          </button>
+        )}
       </div>
 
       {/* Add Form */}
