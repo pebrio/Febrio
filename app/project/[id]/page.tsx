@@ -1,7 +1,13 @@
 import ProjectDetail from "@/components/project/ProjectDetail";
 
 export async function generateStaticParams() {
-  return [];
+  // Return seeded project ids so static export can generate detail pages
+  return [
+    { id: "iot-room-monitoring" },
+    { id: "aiot-smoke-detection" },
+    { id: "smp11-website" },
+    { id: "smart-roaster-iot" },
+  ];
 }
 
 interface Props {
