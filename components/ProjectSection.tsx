@@ -53,7 +53,7 @@ export default function ProjectSection() {
                 <img
                   src={project.image}
                   alt={project.name}
-                  className="mb-6 h-80 w-full rounded-2xl object-cover"
+                  className="mb-6 block h-64 max-w-full w-full rounded-2xl object-cover sm:h-80"
                 />
               ) : (
                 <div className="mb-6 h-60 rounded-2xl bg-gradient-to-br from-orange-500/20 via-white/10 to-transparent" />

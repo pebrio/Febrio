@@ -11,10 +11,6 @@ export default function FooterBrand() {
           <p className="text-lg font-semibold text-white">Febri</p>
         </div>
       </div>
-      {/* <p className="mt-4 max-w-sm text-sm leading-7 text-white/65">
-        I build modern websites, dashboards, and digital solutions that are clean,
-        fast, and easy to maintain.
-      </p> */}
     </div>
   );
 }

@@ -1,51 +1,10 @@
 import SectionBackground from "./SectionBackground";
 import ScrollReveal from "./ScrollReveal";
 import SectionHeading from "./SectionHeading";
+import Link from "next/link";
+import { experiences, type ExperienceIcon } from "@/lib/experienceData";
 
-type ExperienceItem = {
-  title: string;
-  company: string;
-  period: string;
-  summary: string;
-  icon: "globe" | "tech" | "briefcase" | "education";
-};
-
-const experiences: ExperienceItem[] = [
-  {
-    title: "IT Helpdesk",
-    company: "PT Tunas Dwipa Matra",
-    period: "April - July 2026",
-    summary:
-      "Provided operational technical support, managed Odoo 18 ERP systems, and conducted Teds 2.0 testing with UAT reporting to ensure smooth business operations and efficient workflows.",
-    icon: "globe",
-  },
-  {
-    title: "Housekeeping",
-    company: "20 Kopi+",
-    period: "October - December 2025",
-    summary:
-      "Maintained cleanliness, organization, and comfort across operational facilities while providing excellent service to ensure customer satisfaction.",
-    icon: "tech",
-  },
-  {
-    title: "Faculty Teaching Assistant",
-    company: "Universitas Teknokrat Indonesia",
-    period: "October 2024 - March 2026",
-    summary:
-      "Assisted programming, networking, and IoT labs while providing hardware/software technical support and managing lab administration and grading.",
-    icon: "briefcase",
-  },
-  {
-    title: "Kampus Mengajar Batch 7",
-    company: "Kemendikbud Ristek",
-    period: "March - August 2024",
-    summary:
-      "Contributed to the Kampus Mengajar Batch 7 program by integrating technology with an automated bell system, school website development, and interactive learning media to improve student literacy and numeracy.",
-    icon: "education",
-  },
-];
-
-function TimelineIcon({ type }: { type: ExperienceItem["icon"] }) {
+function TimelineIcon({ type }: { type: ExperienceIcon }) {
   const common = "h-5 w-5 text-orange-400";
 
   if (type === "tech") {
@@ -194,6 +153,12 @@ export default function ExperienceSection() {
                           <p className="mt-4 text-sm leading-7 text-white/75">
                             {item.summary}
                           </p>
+                          <Link
+                            href={`/experience/${item.id}`}
+                            className="mt-5 inline-flex items-center text-sm font-semibold text-orange-300 transition-colors hover:text-orange-200"
+                          >
+                            Lihat Detail <span className="ml-2" aria-hidden="true">-&gt;</span>
+                          </Link>
                         </article>
                       ) : null}
                     </div>
@@ -217,6 +182,12 @@ export default function ExperienceSection() {
                           <p className="mt-4 text-sm leading-7 text-white/75">
                             {item.summary}
                           </p>
+                          <Link
+                            href={`/experience/${item.id}`}
+                            className="mt-5 inline-flex items-center text-sm font-semibold text-orange-300 transition-colors hover:text-orange-200"
+                          >
+                            Lihat Detail <span className="ml-2" aria-hidden="true">-&gt;</span>
+                          </Link>
                         </article>
                       ) : null}
                     </div>
@@ -239,6 +210,12 @@ export default function ExperienceSection() {
                         <p className="mt-4 text-sm leading-7 text-white/75">
                           {item.summary}
                         </p>
+                        <Link
+                          href={`/experience/${item.id}`}
+                          className="mt-5 inline-flex items-center text-sm font-semibold text-orange-300 transition-colors hover:text-orange-200"
+                        >
+                          Lihat Detail <span className="ml-2" aria-hidden="true">-&gt;</span>
+                        </Link>
                       </article>
                     </div>
                   </div>

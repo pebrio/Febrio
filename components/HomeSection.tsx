@@ -13,26 +13,26 @@ export default function HomeSection() {
 
   return (
     <section id="home" className="relative overflow-hidden scroll-mt-28">
-      <div className="relative z-10 mx-auto grid min-h-[calc(100vh-12rem)] max-w-6xl items-stretch gap-12 px-6 py-24 lg:grid-cols-[1.2fr_0.8fr] lg:px-10">
+      <div className="relative z-10 mx-auto grid max-w-6xl items-stretch gap-10 px-4 py-16 sm:gap-12 sm:px-8 sm:py-20 lg:min-h-[calc(100svh-4rem)] lg:grid-cols-[1.12fr_0.88fr] lg:gap-10 lg:px-10 lg:py-16 xl:gap-16">
 
-        <ScrollReveal className="relative max-w-3xl h-full flex flex-col justify-between">
-          <p className="mb-5 inline-flex rounded-full border border-orange-400/20 bg-white/5 px-4 py-2 text-sm font-semibold uppercase tracking-[0.28em] text-orange-300 shadow-[0_8px_20px_rgba(245,158,11,0.12)] backdrop-blur">
+        <ScrollReveal className="relative flex h-full max-w-3xl flex-col justify-center">
+          <p className="mb-5 inline-flex w-fit max-w-full rounded-full border border-orange-400/20 bg-white/5 px-3 py-2 text-[11px] font-semibold uppercase tracking-[0.2em] text-orange-300 shadow-[0_8px_20px_rgba(245,158,11,0.12)] backdrop-blur sm:px-4 sm:text-sm sm:tracking-[0.28em]">
             Available for Projects
           </p>
-          <h1 className="max-w-3xl text-4xl font-black tracking-tight text-white drop-shadow-[0_2px_14px_rgba(0,0,0,0.35)] sm:text-6xl">
+          <h1 className="max-w-3xl text-4xl font-black leading-[1.05] tracking-tight text-white drop-shadow-[0_2px_14px_rgba(0,0,0,0.35)] sm:text-5xl lg:text-6xl">
             Akhmad Febriyo Febriyansyah
           </h1>
-          <div className="mt-4 flex flex-wrap gap-3">
+          <div className="mt-5 flex flex-wrap gap-2 sm:gap-3">
             {["IT Helpdesk", "IoT Enthusiast", "IT Support"].map((role) => (
               <span
                 key={role}
-                className="portfolio-card rounded-full px-4 py-2 text-sm font-medium text-white/80"
+                className="portfolio-card rounded-full px-3 py-2 text-xs font-medium text-white/80 sm:px-4 sm:text-sm"
               >
                 {role}
               </span>
             ))}
           </div>
-          <p className="mt-6 max-w-2xl text-lg leading-8 text-white/80">
+          <p className="mt-6 max-w-2xl text-base leading-7 text-white/80 sm:text-lg sm:leading-8">
             I build efficient, responsive, and maintainable websites and digital
             systems that help workflows run more smoothly.
           </p>
@@ -71,19 +71,19 @@ export default function HomeSection() {
               Instagram
             </a>
           </div> */}
-          <div className="mt-12 grid gap-4 sm:grid-cols-3">
+          <div className="mt-10 grid grid-cols-1 gap-3 sm:mt-12 sm:grid-cols-3 sm:gap-4">
             {stats.map((item) => (
-              <div key={item.label} className="portfolio-card rounded-2xl p-5">
-                <p className="text-2xl font-bold text-white">
+              <div key={item.label} className="portfolio-card rounded-2xl p-4 sm:p-5">
+                <p className="text-xl font-bold text-white sm:text-2xl">
                   <AnimatedCounter end={item.value} suffix={item.suffix} />
                 </p>
-                <p className="mt-1 text-sm text-white/60">{item.label}</p>
+                <p className="mt-1 text-xs text-white/60 sm:text-sm">{item.label}</p>
               </div>
             ))}
           </div>
         </ScrollReveal>
         <ScrollReveal className="relative">
-          <div className="portfolio-card relative overflow-hidden rounded-[2rem] border border-white/10 p-6 sm:p-8 h-full min-h-[680px] max-w-[440px] mx-auto lg:mx-0">
+          <div className="portfolio-card relative mx-auto w-full max-w-[440px] overflow-hidden rounded-[2rem] border border-white/10 p-4 sm:p-6 lg:mx-0 lg:p-8">
             <div className="absolute inset-0 bg-gradient-to-br from-orange-500/10 via-transparent to-white/5" />
             <div className="relative flex h-full flex-col">
               <div className="relative rounded-[1.6rem] overflow-hidden border border-white/10">
@@ -101,7 +101,7 @@ export default function HomeSection() {
                 </div>
               </div>
 
-              <div className="mt-auto grid gap-3 pt-6">
+              <div className="grid gap-3 pt-5 sm:pt-6">
                 <div className="rounded-2xl border border-white/10 bg-white/5 p-4">
                   <p className="text-xs uppercase tracking-[0.3em] text-orange-300">
                     Focus
