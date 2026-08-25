@@ -10,6 +10,7 @@ import {
   ProjectStatus,
   ProjectCategory,
 } from "./projectTypes";
+import { assetPath } from "./siteConfig";
 
 // ─── Seed Data (existing projects from portfolio) ────────────────────────────
 const SEED_PROJECTS: Project[] = [
@@ -20,7 +21,7 @@ const SEED_PROJECTS: Project[] = [
       "Developed a room attendance and facility control monitoring system using Blynk, capable of tracking entry/exit counts, displaying real-time sensor distances, and managing electrical devices like lights and fans automatically.",
     category: "iot",
     status: "completed",
-    image: "/Febrio/images/Smart-Monitoring.jpeg",
+    image: assetPath("/images/Smart-Monitoring.jpeg"),
     tags: ["IoT", "Blynk", "ESP32", "Sensor"],
     workItems: [
       {
@@ -58,7 +59,7 @@ const SEED_PROJECTS: Project[] = [
       "Designed an AIoT smoke detection solution using MQ-137 gas sensors and digital image analysis to automate monitoring in public spaces such as malls and educational facilities.",
     category: "ai",
     status: "completed",
-    image: "/Febrio/images/AloT.jpeg",
+    image: assetPath("/images/AloT.jpeg"),
     tags: ["AIoT", "Machine Learning", "Computer Vision", "MQ-137"],
     workItems: [],
     problems: [],
@@ -74,7 +75,7 @@ const SEED_PROJECTS: Project[] = [
       "Built a WordPress school website for SMP 11 Maret Sumberagung to share academic information, school activities, and communication between teachers, students, and parents.",
     category: "web",
     status: "completed",
-    image: "/Febrio/images/Smp11-Maret.png",
+    image: assetPath("/images/Smp11-Maret.png"),
     tags: ["WordPress", "Website", "Education"],
     workItems: [],
     problems: [],

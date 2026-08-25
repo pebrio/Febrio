@@ -3,6 +3,7 @@ import Link from "next/link";
 import ScrollReveal from "./ScrollReveal";
 import AnimatedCounter from "./AnimatedCounter";
 import MusicPlayer from "./MusicPlayer";
+import { assetPath } from "@/lib/siteConfig";
 
 export default function HomeSection() {
   const stats = [
@@ -53,7 +54,7 @@ export default function HomeSection() {
 
           <div className="mt-5">
             <MusicPlayer
-              src="/Febrio/music/Evry.mp3"
+              src={assetPath("/music/Evry.mp3")}
               title="Evry"
               artist="Background Music"
             />
@@ -89,7 +90,7 @@ export default function HomeSection() {
               <div className="relative rounded-[1.6rem] overflow-hidden border border-white/10">
                 <div className="relative aspect-[4/5] w-full overflow-hidden">
                   <Image
-                    src="/Febrio/images/profile.png"
+                    src={assetPath("/images/profile.png")}
                     alt="Akhmad Febriyo Febriyansyah"
                     fill
                     priority

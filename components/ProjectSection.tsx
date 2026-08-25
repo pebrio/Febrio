@@ -2,25 +2,26 @@ import Link from "next/link";
 import SectionHeading from "./SectionHeading";
 import ScrollReveal from "./ScrollReveal";
 import SectionBackground from "./SectionBackground";
+import { assetPath } from "@/lib/siteConfig";
 
 const projects = [
   {
     id: "iot-room-monitoring",
     name: "IoT-Based Room Monitoring System Using Blynk",
     description: "Developed a room attendance and facility control monitoring system using Blynk, capable of tracking entry/exit counts, displaying real-time sensor distances, and managing electrical devices like lights and fans automatically.",
-    image: "/Febrio/images/Smart-Monitoring.jpeg",
+    image: assetPath("/images/Smart-Monitoring.jpeg"),
   },
   {
     id: "aiot-smoke-detection",
     name: "AIoT Smoke Detection System with Digital Image Analysis",
     description: "Designed an AIoT smoke detection solution using MQ-137 gas sensors and digital image analysis to automate monitoring in public spaces such as malls and educational facilities.",
-    image: "/Febrio/images/AloT.jpeg",
+    image: assetPath("/images/AloT.jpeg"),
   },
   {
     id: "smp11-website",
     name: "SMP 11 Maret Sumberagung Website",
     description: "Built a WordPress school website for SMP 11 Maret Sumberagung to share academic information, school activities, and communication between teachers, students, and parents.",
-    image: "/Febrio/images/Smp11-Maret.png",
+    image: assetPath("/images/Smp11-Maret.png"),
   },
   {
     id: "smart-roaster-iot",
