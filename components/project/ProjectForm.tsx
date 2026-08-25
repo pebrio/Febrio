@@ -32,7 +32,7 @@ export default function ProjectForm({
   initial,
   onSubmit,
   onCancel,
-  submitLabel = "Simpan Project",
+  submitLabel = "Save Project",
 }: ProjectFormProps) {
   const [form, setForm] = useState<FormData>({
     name: initial?.name ?? "",
@@ -53,8 +53,8 @@ export default function ProjectForm({
 
   const validate = (): boolean => {
     const newErrors: Partial<Record<keyof FormData, string>> = {};
-    if (!form.name.trim()) newErrors.name = "Nama project wajib diisi.";
-    if (!form.description.trim()) newErrors.description = "Deskripsi wajib diisi.";
+    if (!form.name.trim()) newErrors.name = "Project name is required.";
+    if (!form.description.trim()) newErrors.description = "Description is required.";
     setErrors(newErrors);
     return Object.keys(newErrors).length === 0;
   };
@@ -81,12 +81,12 @@ export default function ProjectForm({
     <form onSubmit={handleSubmit} className="space-y-5">
       {/* Name */}
       <div className="pm-field">
-        <label className="pm-label">Nama Project *</label>
+        <label className="pm-label">Project Name *</label>
         <input
           type="text"
           value={form.name}
           onChange={(e) => set("name", e.target.value)}
-          placeholder="Nama project..."
+          placeholder="Project name..."
           className={`pm-input ${errors.name ? "pm-input-error" : ""}`}
         />
         {errors.name && <p className="pm-error-msg">{errors.name}</p>}
@@ -94,11 +94,11 @@ export default function ProjectForm({
 
       {/* Description */}
       <div className="pm-field">
-        <label className="pm-label">Deskripsi *</label>
+        <label className="pm-label">Description *</label>
         <textarea
           value={form.description}
           onChange={(e) => set("description", e.target.value)}
-          placeholder="Deskripsi singkat project..."
+          placeholder="Short project description..."
           rows={4}
           className={`pm-input ${errors.description ? "pm-input-error" : ""}`}
         />
@@ -108,7 +108,7 @@ export default function ProjectForm({
       {/* Category & Status */}
       <div className="grid grid-cols-2 gap-4">
         <div className="pm-field">
-          <label className="pm-label">Kategori</label>
+          <label className="pm-label">Category</label>
           <select
             value={form.category}
             onChange={(e) => set("category", e.target.value as ProjectCategory)}
@@ -136,7 +136,7 @@ export default function ProjectForm({
       {/* Dates */}
       <div className="grid grid-cols-2 gap-4">
         <div className="pm-field">
-          <label className="pm-label">Tanggal Mulai</label>
+          <label className="pm-label">Start Date</label>
           <input
             type="date"
             value={form.startDate}
@@ -145,7 +145,7 @@ export default function ProjectForm({
           />
         </div>
         <div className="pm-field">
-          <label className="pm-label">Tanggal Selesai</label>
+          <label className="pm-label">End Date</label>
           <input
             type="date"
             value={form.endDate}
@@ -157,7 +157,7 @@ export default function ProjectForm({
 
       {/* Image URL */}
       <div className="pm-field">
-        <label className="pm-label">URL / Path Gambar (opsional)</label>
+        <label className="pm-label">Image URL / Path (optional)</label>
         <input
           type="text"
           value={form.image}
@@ -169,7 +169,7 @@ export default function ProjectForm({
 
       {/* Tags */}
       <div className="pm-field">
-        <label className="pm-label">Tags (pisahkan dengan koma)</label>
+        <label className="pm-label">Tags (comma-separated)</label>
         <input
           type="text"
           value={form.tagsRaw}
@@ -190,7 +190,7 @@ export default function ProjectForm({
             onClick={onCancel}
             className="pm-btn-secondary px-6 py-2.5 rounded-xl font-semibold"
           >
-            Batal
+            Cancel
           </button>
         )}
       </div>

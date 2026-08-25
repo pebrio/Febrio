@@ -88,7 +88,7 @@ export default function WorkTab({ project, onUpdate }: WorkTabProps) {
   };
 
   const handleDelete = (itemId: string) => {
-    if (!confirm("Hapus task ini?")) return;
+    if (!confirm("Delete this task?")) return;
     deleteWorkItem(project.id, itemId);
     onUpdate();
   };
@@ -98,16 +98,16 @@ export default function WorkTab({ project, onUpdate }: WorkTabProps) {
       {/* Progress Summary */}
       <div className="pm-card rounded-2xl p-5 space-y-3">
         <div className="flex items-center justify-between">
-          <h4 className="text-sm font-semibold text-white">Progress Keseluruhan</h4>
+          <h4 className="text-sm font-semibold text-white">Overall Progress</h4>
           <span className="text-2xl font-bold text-amber-400">{progress}%</span>
         </div>
         <div className="pm-progress-track">
           <div className="pm-progress-fill" style={{ width: `${progress}%` }} />
         </div>
         <div className="flex gap-4 text-xs text-white/50">
-          <span>{counts.done} Selesai</span>
-          <span>{counts["in-progress"]} Dikerjakan</span>
-          <span>{counts.todo} Belum</span>
+          <span>{counts.done} Done</span>
+          <span>{counts["in-progress"]} In Progress</span>
+          <span>{counts.todo} To Do</span>
         </div>
       </div>
 
@@ -120,7 +120,7 @@ export default function WorkTab({ project, onUpdate }: WorkTabProps) {
               onClick={() => setFilter(f)}
               className={`pm-filter-btn ${filter === f ? "pm-filter-btn-active" : ""}`}
             >
-              {f === "all" ? "Semua" : STATUS_LABEL[f]}
+              {f === "all" ? "All" : STATUS_LABEL[f]}
               <span className="ml-1 pm-count-badge">
                 {counts[f]}
               </span>
@@ -132,7 +132,7 @@ export default function WorkTab({ project, onUpdate }: WorkTabProps) {
             onClick={() => setShowForm(true)}
             className="pm-btn-primary text-sm py-2 px-4 rounded-xl"
           >
-            + Tambah Task
+            + Add Task
           </button>
         )}
       </div>
@@ -140,32 +140,32 @@ export default function WorkTab({ project, onUpdate }: WorkTabProps) {
       {/* Add Form */}
       {showForm && (
         <div className="pm-card rounded-2xl p-5 space-y-3 border border-amber-500/30">
-          <h4 className="text-sm font-semibold text-white">Task Baru</h4>
+          <h4 className="text-sm font-semibold text-white">New Task</h4>
           <input
             autoFocus
             type="text"
             value={newTitle}
             onChange={(e) => setNewTitle(e.target.value)}
-            placeholder="Nama task / milestone..."
+            placeholder="Task / milestone name..."
             className="pm-input w-full"
             onKeyDown={(e) => e.key === "Enter" && handleAdd()}
           />
           <textarea
             value={newDesc}
             onChange={(e) => setNewDesc(e.target.value)}
-            placeholder="Deskripsi (opsional)..."
+            placeholder="Description (optional)..."
             rows={2}
             className="pm-input w-full"
           />
           <div className="flex gap-2">
             <button onClick={handleAdd} className="pm-btn-primary text-sm py-1.5 px-4 rounded-lg">
-              Simpan
+              Save
             </button>
             <button
               onClick={() => { setShowForm(false); setNewTitle(""); setNewDesc(""); }}
               className="pm-btn-secondary text-sm py-1.5 px-4 rounded-lg"
             >
-              Batal
+              Cancel
             </button>
           </div>
         </div>
@@ -174,7 +174,7 @@ export default function WorkTab({ project, onUpdate }: WorkTabProps) {
       {/* Task List */}
       {filtered.length === 0 ? (
         <div className="text-center py-12 text-white/40">
-          <p className="text-sm">Belum ada task. Tambahkan task pertama!</p>
+          <p className="text-sm">No tasks yet. Add the first task!</p>
         </div>
       ) : (
         <div className="space-y-2">
@@ -204,7 +204,7 @@ export default function WorkTab({ project, onUpdate }: WorkTabProps) {
               <button
                 onClick={() => handleDelete(item.id)}
                 className="text-white/30 hover:text-red-400 transition-colors text-sm flex-shrink-0"
-                title="Hapus task"
+                title="Delete task"
               >
                 ✕
               </button>

@@ -50,13 +50,13 @@ export default function DocTab({ project, onUpdate }: DocTabProps) {
   };
 
   const handleDelete = (docId: string) => {
-    if (!confirm("Hapus dokumentasi ini?")) return;
+    if (!confirm("Delete this documentation?")) return;
     deleteDoc(project.id, docId);
     onUpdate();
   };
 
   const formatDate = (iso: string) =>
-    new Date(iso).toLocaleDateString("id-ID", {
+    new Date(iso).toLocaleDateString("en-US", {
       day: "numeric",
       month: "short",
       year: "numeric",
@@ -73,7 +73,7 @@ export default function DocTab({ project, onUpdate }: DocTabProps) {
               onClick={() => setFilterType(f)}
               className={`pm-filter-btn ${filterType === f ? "pm-filter-btn-active" : ""}`}
             >
-              {f === "all" ? "Semua" : f === "note" ? "📝 Catatan" : "🔗 Link"}
+              {f === "all" ? "All" : f === "note" ? "📝 Note" : "🔗 Link"}
               <span className="ml-1 pm-count-badge">
                 {f === "all"
                   ? project.docs.length
@@ -87,7 +87,7 @@ export default function DocTab({ project, onUpdate }: DocTabProps) {
             onClick={() => setShowForm(true)}
             className="pm-btn-primary text-sm py-2 px-4 rounded-xl"
           >
-            + Tambah Dokumentasi
+            + Add Documentation
           </button>
         )}
       </div>
@@ -95,14 +95,14 @@ export default function DocTab({ project, onUpdate }: DocTabProps) {
       {/* Add Form */}
       {showForm && (
         <div className="pm-card rounded-2xl p-5 space-y-3 border border-amber-500/30">
-          <h4 className="text-sm font-semibold text-white">Dokumentasi Baru</h4>
+          <h4 className="text-sm font-semibold text-white">New Documentation</h4>
           {/* Type Toggle */}
           <div className="flex gap-2">
             <button
               onClick={() => setDocType("note")}
               className={`pm-filter-btn flex-1 ${docType === "note" ? "pm-filter-btn-active" : ""}`}
             >
-              📝 Catatan
+              📝 Note
             </button>
             <button
               onClick={() => setDocType("link")}
@@ -117,14 +117,14 @@ export default function DocTab({ project, onUpdate }: DocTabProps) {
             type="text"
             value={title}
             onChange={(e) => setTitle(e.target.value)}
-            placeholder={docType === "note" ? "Judul catatan..." : "Nama link / referensi..."}
+            placeholder={docType === "note" ? "Note title..." : "Link / reference name..."}
             className="pm-input w-full"
           />
           {docType === "note" ? (
             <textarea
               value={content}
               onChange={(e) => setContent(e.target.value)}
-              placeholder="Tulis catatan dokumentasi di sini..."
+              placeholder="Write documentation notes here..."
               rows={6}
               className="pm-input w-full font-mono text-xs leading-relaxed"
             />
@@ -139,13 +139,13 @@ export default function DocTab({ project, onUpdate }: DocTabProps) {
           )}
           <div className="flex gap-2">
             <button onClick={handleAdd} className="pm-btn-primary text-sm py-1.5 px-4 rounded-lg">
-              Simpan
+              Save
             </button>
             <button
               onClick={() => { setShowForm(false); setTitle(""); setContent(""); }}
               className="pm-btn-secondary text-sm py-1.5 px-4 rounded-lg"
             >
-              Batal
+              Cancel
             </button>
           </div>
         </div>
@@ -154,7 +154,7 @@ export default function DocTab({ project, onUpdate }: DocTabProps) {
       {/* Doc List */}
       {filtered.length === 0 ? (
         <div className="text-center py-12 text-white/40">
-          <p className="text-sm">Belum ada dokumentasi. Tambahkan catatan atau link!</p>
+          <p className="text-sm">No documentation yet. Add a note or link!</p>
         </div>
       ) : (
         <div className="space-y-3">
@@ -174,7 +174,7 @@ export default function DocTab({ project, onUpdate }: DocTabProps) {
                 <button
                   onClick={() => handleDelete(doc.id)}
                   className="text-white/30 hover:text-red-400 text-sm transition-colors flex-shrink-0"
-                  title="Hapus"
+                  title="Delete"
                 >
                   ✕
                 </button>

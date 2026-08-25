@@ -2,6 +2,7 @@
 
 import { useState, useEffect } from "react";
 import { useRouter } from "next/navigation";
+import { ArrowLeft } from "lucide-react";
 import { useProjectStore } from "@/lib/projectStore";
 import { Project, ProjectCategory, ProjectStatus, CATEGORY_LABELS, STATUS_LABELS } from "@/lib/projectTypes";
 import { getProjectAccessRole, isProjectAdmin } from "@/lib/projectAccess";
@@ -38,7 +39,7 @@ export default function ProjectDashboard() {
       <div className="min-h-screen flex items-center justify-center">
         <div className="text-center space-y-3">
           <div className="pm-spinner mx-auto" />
-          <p className="text-white/50 text-sm">Memuat project...</p>
+          <p className="text-white/50 text-sm">Loading projects...</p>
         </div>
       </div>
     );
@@ -68,35 +69,29 @@ export default function ProjectDashboard() {
               Project Manager
             </p>
             <h1 className="text-3xl sm:text-4xl font-bold text-white leading-tight">
-              Semua Project
+              All Projects
             </h1>
             <p className="text-white/50 text-sm mt-1">
-              {projects.length} project · {totalCompleted} selesai · {totalInProgress} berjalan
+              {projects.length} projects · {totalCompleted} completed · {totalInProgress} in progress
             </p>
           </div>
-          {canManage && (
+          <div className="flex flex-wrap items-center gap-3">
             <button
-              onClick={() => router.push("/project?new=1")}
-              className="pm-btn-primary px-5 py-2.5 rounded-xl text-sm font-semibold inline-flex items-center gap-2 w-fit"
+              onClick={() => router.push("/")}
+              className="group pm-btn-secondary px-4 py-2.5 rounded-xl text-sm font-semibold inline-flex items-center gap-2 w-fit"
             >
-              + Tambah Project
+              <ArrowLeft className="h-4 w-4 transition-transform duration-300 group-hover:-translate-x-1" aria-hidden="true" />
+              Back to Home
             </button>
-          )}
-        </div>
-
-        {/* ── Stats Summary ── */}
-        <div className="grid grid-cols-2 sm:grid-cols-4 gap-3">
-          {[
-            { label: "Total Project", value: projects.length },
-            { label: "Selesai", value: totalCompleted },
-            { label: "Berjalan", value: totalInProgress },
-            { label: "On Hold", value: projects.filter((p) => p.status === "on-hold").length },
-          ].map((stat) => (
-            <div key={stat.label} className="pm-card rounded-2xl p-4 text-center">
-              <p className="text-2xl font-bold text-white">{stat.value}</p>
-              <p className="text-xs text-white/50 mt-0.5">{stat.label}</p>
-            </div>
-          ))}
+            {canManage && (
+              <button
+                onClick={() => router.push("/project?new=1")}
+                className="pm-btn-primary px-5 py-2.5 rounded-xl text-sm font-semibold inline-flex items-center gap-2 w-fit"
+              >
+                + Add Project
+              </button>
+            )}
+          </div>
         </div>
 
         {/* ── Search & Filters ── */}
@@ -107,7 +102,7 @@ export default function ProjectDashboard() {
               type="text"
               value={search}
               onChange={(e) => setSearch(e.target.value)}
-              placeholder="Cari project, tag, atau deskripsi..."
+              placeholder="Search projects, tags, or descriptions..."
               className="pm-input w-full"
             />
           </div>
@@ -121,19 +116,19 @@ export default function ProjectDashboard() {
                 onClick={() => setFilterStatus(s)}
                 className={`pm-filter-btn ${filterStatus === s ? "pm-filter-btn-active" : ""}`}
               >
-                {s === "all" ? "Semua" : STATUS_LABELS[s]}
+                {s === "all" ? "All" : STATUS_LABELS[s]}
               </button>
             ))}
           </div>
           <div className="flex flex-wrap gap-2 items-center">
-            <span className="text-xs text-white/40">Kategori:</span>
+            <span className="text-xs text-white/40">Category:</span>
             {(["all", "iot", "web", "mobile", "ai", "hardware", "other"] as const).map((c) => (
               <button
                 key={c}
                 onClick={() => setFilterCategory(c)}
                 className={`pm-filter-btn ${filterCategory === c ? "pm-filter-btn-active" : ""}`}
               >
-                {c === "all" ? "Semua" : CATEGORY_LABELS[c]}
+                {c === "all" ? "All" : CATEGORY_LABELS[c]}
               </button>
             ))}
           </div>
@@ -142,11 +137,11 @@ export default function ProjectDashboard() {
         {/* ── Project Grid ── */}
         {filtered.length === 0 ? (
           <div className="text-center py-20 text-white/40">
-            <p className="text-lg font-semibold">Tidak ada project ditemukan</p>
-            <p className="text-sm mt-1">Coba ubah filter atau tambahkan project baru.</p>
+            <p className="text-lg font-semibold">No projects found</p>
+            <p className="text-sm mt-1">Try changing the filters or adding a new project.</p>
             {canManage && (
               <button onClick={() => router.push("/project?new=1")} className="pm-btn-primary text-sm py-2 px-5 rounded-xl inline-block mt-4">
-                + Tambah Project
+                + Add Project
               </button>
             )}
           </div>
@@ -175,7 +170,7 @@ export default function ProjectDashboard() {
                 setEditingProject(null);
               }}
               onCancel={() => setEditingProject(null)}
-              submitLabel="Simpan Perubahan"
+              submitLabel="Save Changes"
             />
           </div>
         </div>

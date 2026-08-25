@@ -30,7 +30,7 @@ export default function ProjectPage() {
       <div className="min-h-screen flex items-center justify-center">
         <div className="text-center space-y-3">
           <div className="pm-spinner mx-auto" />
-          <p className="text-white/50 text-sm">Memuat...</p>
+          <p className="text-white/50 text-sm">Loading...</p>
         </div>
       </div>
     }>

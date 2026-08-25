@@ -13,7 +13,7 @@ export default function AboutSection() {
       <SectionHeading
         eyebrow="About"
         title="About Me"
-        description="Fresh Graduate | Universitas Teknokrat Indonesia | Computer Engineering | 2025"
+        description="Fresh Graduate | Teknokrat University of Indonesia | Computer Engineering | 2025"
       />
       <ScrollReveal className="mt-10 grid gap-6 lg:grid-cols-[1.3fr_0.7fr]">
         <div className="portfolio-card rounded-3xl p-8">

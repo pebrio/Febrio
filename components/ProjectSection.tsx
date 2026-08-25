@@ -89,7 +89,7 @@ export default function ProjectSection() {
             href="/project"
             className="portfolio-btn portfolio-btn-secondary inline-flex items-center gap-1"
           >
-            Lihat Semua Project & Detail Lengkap
+            View All Projects & Full Details
           </Link>
         </div>
       </div>

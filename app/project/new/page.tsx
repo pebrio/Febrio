@@ -24,9 +24,9 @@ export default function NewProjectPage() {
           <p className="text-xs text-amber-400 uppercase tracking-widest font-semibold mb-1">
             Project Manager
           </p>
-          <h1 className="text-3xl font-bold text-white">Tambah Project Baru</h1>
+          <h1 className="text-3xl font-bold text-white">Add New Project</h1>
           <p className="text-white/50 text-sm mt-1">
-            Isi informasi dasar project. Detail pekerjaan, masalah, dan dokumentasi dapat ditambahkan setelahnya.
+            Enter the basic project information. Work details, problems, and documentation can be added later.
           </p>
         </div>
 

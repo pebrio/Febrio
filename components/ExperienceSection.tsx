@@ -157,7 +157,7 @@ export default function ExperienceSection() {
                             href={`/experience/${item.id}`}
                             className="mt-5 inline-flex items-center text-sm font-semibold text-orange-300 transition-colors hover:text-orange-200"
                           >
-                            Lihat Detail <span className="ml-2" aria-hidden="true">-&gt;</span>
+                            View Details <span className="ml-2" aria-hidden="true">-&gt;</span>
                           </Link>
                         </article>
                       ) : null}
@@ -186,7 +186,7 @@ export default function ExperienceSection() {
                             href={`/experience/${item.id}`}
                             className="mt-5 inline-flex items-center text-sm font-semibold text-orange-300 transition-colors hover:text-orange-200"
                           >
-                            Lihat Detail <span className="ml-2" aria-hidden="true">-&gt;</span>
+                            View Details <span className="ml-2" aria-hidden="true">-&gt;</span>
                           </Link>
                         </article>
                       ) : null}
@@ -214,7 +214,7 @@ export default function ExperienceSection() {
                           href={`/experience/${item.id}`}
                           className="mt-5 inline-flex items-center text-sm font-semibold text-orange-300 transition-colors hover:text-orange-200"
                         >
-                          Lihat Detail <span className="ml-2" aria-hidden="true">-&gt;</span>
+                          View Details <span className="ml-2" aria-hidden="true">-&gt;</span>
                         </Link>
                       </article>
                     </div>

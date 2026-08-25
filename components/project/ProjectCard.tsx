@@ -68,7 +68,7 @@ export default function ProjectCard({ project, onDelete, onEdit }: ProjectCardPr
         {project.workItems.length > 0 && (
           <div className="space-y-1">
             <div className="flex justify-between text-xs text-white/50">
-              <span>Progress Pekerjaan</span>
+              <span>Work Progress</span>
               <span>{progress}%</span>
             </div>
             <div className="pm-progress-track">
@@ -82,13 +82,13 @@ export default function ProjectCard({ project, onDelete, onEdit }: ProjectCardPr
 
         {/* Stats */}
         <div className="flex items-center gap-3 pt-1 text-xs text-white/50 border-t border-white/5">
-          <span title="Jumlah pekerjaan">{project.workItems.length} Task</span>
+          <span title="Number of tasks">{project.workItems.length} Task</span>
           {openProblems > 0 && (
-            <span title="Masalah terbuka" className="text-orange-400">
-              {openProblems} Masalah
+            <span title="Open problems" className="text-orange-400">
+              {openProblems} Problems
             </span>
           )}
-          <span title="Dokumentasi">{project.docs.length} Dok</span>
+          <span title="Documentation">{project.docs.length} Docs</span>
         </div>
 
         {/* Actions */}
@@ -97,7 +97,7 @@ export default function ProjectCard({ project, onDelete, onEdit }: ProjectCardPr
             href={`/project?id=${project.id}`}
             className="flex-1 min-w-[110px] text-center pm-btn-primary text-xs py-2 rounded-xl"
           >
-            Lihat Detail
+            View Details
           </Link>
           {onEdit && (
             <button
@@ -111,14 +111,14 @@ export default function ProjectCard({ project, onDelete, onEdit }: ProjectCardPr
           {onDelete && (
             <button
               onClick={() => {
-                if (confirm(`Hapus project "${project.name}"?`)) {
+                if (confirm(`Delete project "${project.name}"?`)) {
                   onDelete(project.id);
                 }
               }}
               className="pm-btn-danger text-xs py-2 px-3 rounded-xl"
-              title="Hapus project"
+              title="Delete project"
             >
-              Hapus
+              Delete
             </button>
           )}
         </div>

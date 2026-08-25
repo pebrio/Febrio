@@ -66,7 +66,7 @@ export default function ProblemTab({ project, onUpdate }: ProblemTabProps) {
   };
 
   const handleDeleteProblem = (problemId: string) => {
-    if (!confirm("Hapus masalah ini?")) return;
+    if (!confirm("Delete this problem?")) return;
     deleteProblem(project.id, problemId);
     onUpdate();
   };
@@ -84,13 +84,13 @@ export default function ProblemTab({ project, onUpdate }: ProblemTabProps) {
   };
 
   const handleDeleteSolution = (solutionId: string) => {
-    if (!confirm("Hapus solusi ini?")) return;
+    if (!confirm("Delete this solution?")) return;
     deleteSolution(project.id, solutionId);
     onUpdate();
   };
 
   const formatDate = (iso: string) =>
-    new Date(iso).toLocaleDateString("id-ID", { day: "numeric", month: "short", year: "numeric" });
+    new Date(iso).toLocaleDateString("en-US", { day: "numeric", month: "short", year: "numeric" });
 
   return (
     <div className="space-y-5">
@@ -100,7 +100,7 @@ export default function ProblemTab({ project, onUpdate }: ProblemTabProps) {
           onClick={() => setActiveTab("problems")}
           className={`pm-subtab flex-1 ${activeTab === "problems" ? "pm-subtab-active" : ""}`}
         >
-          Masalah
+          Problems
           {openProblems.length > 0 && (
             <span className="ml-1.5 pm-count-badge bg-orange-500/20 text-orange-300">
               {openProblems.length}
@@ -111,7 +111,7 @@ export default function ProblemTab({ project, onUpdate }: ProblemTabProps) {
           onClick={() => setActiveTab("solutions")}
           className={`pm-subtab flex-1 ${activeTab === "solutions" ? "pm-subtab-active" : ""}`}
         >
-          Solusi
+          Solutions
           <span className="ml-1.5 pm-count-badge">{project.solutions.length}</span>
         </button>
       </div>
@@ -121,14 +121,14 @@ export default function ProblemTab({ project, onUpdate }: ProblemTabProps) {
         <div className="space-y-4">
           <div className="flex justify-between items-center">
             <p className="text-xs text-white/50">
-              {openProblems.length} masalah terbuka · {resolvedProblems.length} diselesaikan
+              {openProblems.length} open · {resolvedProblems.length} resolved
             </p>
             {canManage && (
               <button
                 onClick={() => setShowProblemForm(true)}
                 className="pm-btn-primary text-sm py-2 px-4 rounded-xl"
               >
-                + Tambah Masalah
+                + Add Problem
               </button>
             )}
           </div>
@@ -136,19 +136,19 @@ export default function ProblemTab({ project, onUpdate }: ProblemTabProps) {
           {/* Add Problem Form */}
           {showProblemForm && (
             <div className="pm-card rounded-2xl p-5 space-y-3 border border-orange-500/30">
-              <h4 className="text-sm font-semibold text-white">Masalah Baru</h4>
+              <h4 className="text-sm font-semibold text-white">New Problem</h4>
               <input
                 autoFocus
                 type="text"
                 value={pTitle}
                 onChange={(e) => setPTitle(e.target.value)}
-                placeholder="Judul masalah..."
+                placeholder="Problem title..."
                 className="pm-input w-full"
               />
               <textarea
                 value={pDesc}
                 onChange={(e) => setPDesc(e.target.value)}
-                placeholder="Deskripsi masalah..."
+                placeholder="Problem description..."
                 rows={3}
                 className="pm-input w-full"
               />
@@ -161,8 +161,8 @@ export default function ProblemTab({ project, onUpdate }: ProblemTabProps) {
                 </select>
               </div>
               <div className="flex gap-2">
-                <button onClick={handleAddProblem} className="pm-btn-primary text-sm py-1.5 px-4 rounded-lg">Simpan</button>
-                <button onClick={() => setShowProblemForm(false)} className="pm-btn-secondary text-sm py-1.5 px-4 rounded-lg">Batal</button>
+                <button onClick={handleAddProblem} className="pm-btn-primary text-sm py-1.5 px-4 rounded-lg">Save</button>
+                <button onClick={() => setShowProblemForm(false)} className="pm-btn-secondary text-sm py-1.5 px-4 rounded-lg">Cancel</button>
               </div>
             </div>
           )}
@@ -170,7 +170,7 @@ export default function ProblemTab({ project, onUpdate }: ProblemTabProps) {
           {/* Problem List */}
           {project.problems.length === 0 ? (
             <div className="text-center py-12 text-white/40">
-              <p className="text-sm">Tidak ada masalah tercatat. Bagus!</p>
+              <p className="text-sm">No problems recorded. Great!</p>
             </div>
           ) : (
             <div className="space-y-3">
@@ -188,11 +188,11 @@ export default function ProblemTab({ project, onUpdate }: ProblemTabProps) {
                       <button
                         onClick={() => handleResolveProblem(problem.id)}
                         className="pm-btn-secondary text-xs py-1 px-2 rounded-lg"
-                        title="Tandai selesai"
+                        title="Mark as resolved"
                       >
-                        Selesai
+                        Resolve
                       </button>
-                      <button onClick={() => handleDeleteProblem(problem.id)} className="text-white/30 hover:text-red-400 text-sm transition-colors">Hapus</button>
+                      <button onClick={() => handleDeleteProblem(problem.id)} className="text-white/30 hover:text-red-400 text-sm transition-colors">Delete</button>
                     </div>
                   </div>
                   <h4 className="text-sm font-semibold text-white">{problem.title}</h4>
@@ -202,7 +202,7 @@ export default function ProblemTab({ project, onUpdate }: ProblemTabProps) {
                   {/* Linked solutions */}
                   {project.solutions.filter((s) => s.problemId === problem.id).length > 0 && (
                     <div className="pt-2 border-t border-white/5">
-                      <p className="text-xs text-white/40 mb-1">Solusi terhubung:</p>
+                      <p className="text-xs text-white/40 mb-1">Linked solutions:</p>
                       {project.solutions
                         .filter((s) => s.problemId === problem.id)
                         .map((s) => (
@@ -217,19 +217,19 @@ export default function ProblemTab({ project, onUpdate }: ProblemTabProps) {
               {resolvedProblems.length > 0 && (
                 <details className="group">
                   <summary className="cursor-pointer text-xs text-white/40 hover:text-white/60 transition-colors py-2">
-                    {resolvedProblems.length} masalah diselesaikan
+                    {resolvedProblems.length} resolved problems
                   </summary>
                   <div className="mt-2 space-y-2">
                     {resolvedProblems.map((problem) => (
                       <div key={problem.id} className="pm-card rounded-xl p-4 space-y-1.5 opacity-50 border-l-2 border-green-500">
                         <div className="flex items-center justify-between gap-2">
                           <div className="flex items-center gap-2">
-                            <span className="text-xs text-green-400">Diselesaikan {formatDate(problem.resolvedAt!)}</span>
+                            <span className="text-xs text-green-400">Resolved {formatDate(problem.resolvedAt!)}</span>
                             <span className={`pm-badge pm-badge-severity ${SEVERITY_COLORS[problem.severity]}`}>{SEVERITY_LABELS[problem.severity]}</span>
                           </div>
                           <div className="flex gap-1.5">
-                            <button onClick={() => handleReopenProblem(problem.id)} className="pm-btn-secondary text-xs py-1 px-2 rounded-lg">Buka Kembali</button>
-                            <button onClick={() => handleDeleteProblem(problem.id)} className="text-white/30 hover:text-red-400 text-sm">Hapus</button>
+                            <button onClick={() => handleReopenProblem(problem.id)} className="pm-btn-secondary text-xs py-1 px-2 rounded-lg">Reopen</button>
+                            <button onClick={() => handleDeleteProblem(problem.id)} className="text-white/30 hover:text-red-400 text-sm">Delete</button>
                           </div>
                         </div>
                         <h4 className="text-sm font-medium text-white line-through">{problem.title}</h4>
@@ -247,13 +247,13 @@ export default function ProblemTab({ project, onUpdate }: ProblemTabProps) {
       {activeTab === "solutions" && (
         <div className="space-y-4">
           <div className="flex justify-between items-center">
-            <p className="text-xs text-white/50">{project.solutions.length} solusi dicatat</p>
+            <p className="text-xs text-white/50">{project.solutions.length} solutions recorded</p>
             {canManage && (
               <button
                 onClick={() => setShowSolutionForm("general")}
                 className="pm-btn-primary text-sm py-2 px-4 rounded-xl"
               >
-                + Tambah Solusi
+                + Add Solution
               </button>
             )}
           </div>
@@ -261,27 +261,27 @@ export default function ProblemTab({ project, onUpdate }: ProblemTabProps) {
           {/* Add Solution Form */}
           {showSolutionForm && (
             <div className="pm-card rounded-2xl p-5 space-y-3 border border-amber-500/30">
-              <h4 className="text-sm font-semibold text-white">Solusi Baru</h4>
+              <h4 className="text-sm font-semibold text-white">New Solution</h4>
               <input
                 autoFocus
                 type="text"
                 value={sTitle}
                 onChange={(e) => setSTitle(e.target.value)}
-                placeholder="Judul solusi..."
+                placeholder="Solution title..."
                 className="pm-input w-full"
               />
               <textarea
                 value={sDesc}
                 onChange={(e) => setSDesc(e.target.value)}
-                placeholder="Penjelasan solusi..."
+                placeholder="Solution explanation..."
                 rows={4}
                 className="pm-input w-full"
               />
               {project.problems.length > 0 && (
                 <div className="pm-field">
-                  <label className="pm-label">Terhubung ke masalah (opsional)</label>
+                  <label className="pm-label">Link to problem (optional)</label>
                   <select value={sProblemId} onChange={(e) => setSProblemId(e.target.value)} className="pm-input">
-                    <option value="">— Tidak terhubung —</option>
+                    <option value="">— Not linked —</option>
                     {project.problems.map((p) => (
                       <option key={p.id} value={p.id}>{p.title}</option>
                     ))}
@@ -289,8 +289,8 @@ export default function ProblemTab({ project, onUpdate }: ProblemTabProps) {
                 </div>
               )}
               <div className="flex gap-2">
-                <button onClick={handleAddSolution} className="pm-btn-primary text-sm py-1.5 px-4 rounded-lg">Simpan</button>
-                <button onClick={() => setShowSolutionForm(null)} className="pm-btn-secondary text-sm py-1.5 px-4 rounded-lg">Batal</button>
+                <button onClick={handleAddSolution} className="pm-btn-primary text-sm py-1.5 px-4 rounded-lg">Save</button>
+                <button onClick={() => setShowSolutionForm(null)} className="pm-btn-secondary text-sm py-1.5 px-4 rounded-lg">Cancel</button>
               </div>
             </div>
           )}
@@ -298,7 +298,7 @@ export default function ProblemTab({ project, onUpdate }: ProblemTabProps) {
           {/* Solution List */}
           {project.solutions.length === 0 ? (
             <div className="text-center py-12 text-white/40">
-              <p className="text-sm">Belum ada solusi dicatat.</p>
+              <p className="text-sm">No solutions recorded yet.</p>
             </div>
           ) : (
             <div className="space-y-3">
@@ -310,14 +310,14 @@ export default function ProblemTab({ project, onUpdate }: ProblemTabProps) {
                   <div key={sol.id} className="pm-card rounded-xl p-4 space-y-2 border-l-2 border-amber-500">
                     <div className="flex items-start justify-between gap-2">
                       <h4 className="text-sm font-semibold text-white">{sol.title}</h4>
-                      <button onClick={() => handleDeleteSolution(sol.id)} className="text-white/30 hover:text-red-400 text-sm transition-colors flex-shrink-0">Hapus</button>
+                      <button onClick={() => handleDeleteSolution(sol.id)} className="text-white/30 hover:text-red-400 text-sm transition-colors flex-shrink-0">Delete</button>
                     </div>
                     {sol.description && (
                       <p className="text-xs text-white/60 leading-relaxed whitespace-pre-wrap">{sol.description}</p>
                     )}
                     {linkedProblem && (
                       <div className="flex items-center gap-1.5 text-xs text-orange-300/80">
-                        <span>Terkait: {linkedProblem.title}</span>
+                        <span>Related: {linkedProblem.title}</span>
                       </div>
                     )}
                     <p className="text-xs text-white/30">{formatDate(sol.createdAt)}</p>
