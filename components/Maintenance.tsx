@@ -4,8 +4,8 @@ import { useEffect, useState } from "react";
 import { Mail } from "lucide-react";
 import { InstagramIcon, WhatsAppIcon } from "./SocialIcons";
 
-const COUNTDOWN_KEY = "febrio-maintenance-end";
 const COUNTDOWN_DURATION = 365 * 24 * 60 * 60 * 1000;
+const DEFAULT_MAINTENANCE_END = "2027-08-26T00:00:00.000Z";
 
 type Countdown = {
   days: number;
@@ -36,10 +36,13 @@ export default function Maintenance() {
   const [countdown, setCountdown] = useState<Countdown>(emptyCountdown);
 
   useEffect(() => {
-    const storedEndTime = Number(window.localStorage.getItem(COUNTDOWN_KEY));
-    const endTime = storedEndTime > Date.now() ? storedEndTime : Date.now() + COUNTDOWN_DURATION;
+    const configuredEndTime = Date.parse(
+      process.env.NEXT_PUBLIC_MAINTENANCE_END ?? DEFAULT_MAINTENANCE_END,
+    );
+    const endTime = Number.isNaN(configuredEndTime)
+      ? Date.now() + COUNTDOWN_DURATION
+      : configuredEndTime;
 
-    window.localStorage.setItem(COUNTDOWN_KEY, endTime.toString());
     setCountdown(getCountdown(endTime));
 
     const timer = window.setInterval(() => {
