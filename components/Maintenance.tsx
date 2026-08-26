@@ -62,7 +62,7 @@ export default function Maintenance() {
         minHeight: "100vh",
         display: "grid",
         placeItems: "center",
-        padding: "32px 20px",
+        padding: "clamp(24px, 5vw, 64px) clamp(16px, 5vw, 72px)",
         background:
           "radial-gradient(circle at top, rgba(245, 158, 11, 0.14), transparent 38%), #050505",
         color: "#ffffff",
@@ -71,9 +71,14 @@ export default function Maintenance() {
     >
       <section
         style={{
-          width: "min(100%, 620px)",
+          width: "min(100%, 1040px)",
+          minHeight: "min(680px, calc(100vh - 48px))",
+          display: "flex",
+          flexDirection: "column",
+          justifyContent: "center",
           textAlign: "center",
-          padding: "clamp(32px, 8vw, 72px) clamp(24px, 6vw, 56px)",
+          padding: "clamp(36px, 7vw, 96px) clamp(20px, 8vw, 120px)",
+          boxSizing: "border-box",
           border: "1px solid rgba(245, 158, 11, 0.25)",
           borderRadius: "24px",
           background: "rgba(255, 255, 255, 0.045)",
@@ -84,13 +89,13 @@ export default function Maintenance() {
           style={{
             margin: "0 0 12px",
             color: "#f59e0b",
-            fontSize: "12px",
+            fontSize: "20px",
             fontWeight: 700,
             letterSpacing: "0.3em",
             textTransform: "uppercase",
           }}
         >
-          Maintenance Mode
+          Maintenance Mode Lekku
         </p>
         <h1
           style={{
@@ -106,20 +111,21 @@ export default function Maintenance() {
           style={{
             display: "grid",
             gridTemplateColumns: "repeat(4, minmax(0, 1fr))",
-            gap: "clamp(8px, 2vw, 16px)",
-            marginTop: "32px",
+            gap: "clamp(8px, 2.5vw, 28px)",
+            margin: "clamp(28px, 5vw, 56px) auto 0",
+            width: "100%",
           }}
         >
           {countdownItems.map((item) => (
             <div key={item.label}>
               <div
                 style={{
-                  padding: "clamp(12px, 3vw, 20px) 8px",
+                  padding: "clamp(16px, 3vw, 32px) 8px",
                   border: "1px solid rgba(245, 158, 11, 0.3)",
                   borderRadius: "14px",
                   background: "rgba(0, 0, 0, 0.28)",
                   color: "#ffffff",
-                  fontSize: "clamp(24px, 6vw, 42px)",
+                  fontSize: "clamp(24px, 5vw, 64px)",
                   fontWeight: 700,
                   lineHeight: 1,
                   fontVariantNumeric: "tabular-nums",
@@ -131,7 +137,7 @@ export default function Maintenance() {
                 style={{
                   margin: "10px 0 0",
                   color: "rgba(255, 255, 255, 0.55)",
-                  fontSize: "11px",
+                  fontSize: "clamp(9px, 1.2vw, 13px)",
                   fontWeight: 700,
                   letterSpacing: "0.16em",
                   textTransform: "uppercase",
@@ -141,6 +147,64 @@ export default function Maintenance() {
               </p>
             </div>
           ))}
+        </div>
+        <div
+          style={{
+            width: "min(100%, 720px)",
+            margin: "clamp(24px, 4vw, 42px) auto 0",
+          }}
+        >
+          <div
+            style={{
+              display: "flex",
+              alignItems: "center",
+              justifyContent: "space-between",
+              gap: "16px",
+              marginBottom: "10px",
+              color: "rgba(255, 255, 255, 0.68)",
+              fontSize: "13px",
+              fontWeight: 600,
+            }}
+          >
+            <span>System update in progress</span>
+            <span style={{ color: "#f59e0b" }}>Updating...</span>
+          </div>
+          <div
+            aria-label="System update progress"
+            role="progressbar"
+            style={{
+              position: "relative",
+              height: "15px",
+              overflow: "hidden",
+              border: "1px solid rgba(245, 158, 11, 0.35)",
+              borderRadius: "999px",
+              background: "rgba(0, 0, 0, 0.45)",
+              boxShadow: "inset 0 0 12px rgba(0, 0, 0, 0.35)",
+            }}
+          >
+            <div
+              style={{
+                position: "absolute",
+                inset: "1px auto 1px 1px",
+                width: "42%",
+                borderRadius: "999px",
+                background: "linear-gradient(90deg, #b45309, #f59e0b, #fde68a)",
+                boxShadow: "0 0 18px rgba(245, 158, 11, 0.55)",
+                animation: "maintenance-progress 2.4s ease-in-out infinite",
+              }}
+            />
+            <div
+              aria-hidden="true"
+              style={{
+                position: "absolute",
+                inset: 0,
+                width: "34%",
+                background: "linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.7), transparent)",
+                transform: "translateX(-140%) skewX(-18deg)",
+                animation: "maintenance-shimmer 1.8s linear infinite",
+              }}
+            />
+          </div>
         </div>
         <p
           style={{
@@ -203,6 +267,22 @@ export default function Maintenance() {
           </a>
         </div>
       </section>
+      <style>{`
+        @keyframes maintenance-progress {
+          0% { transform: translateX(-105%); }
+          50% { transform: translateX(125%); }
+          100% { transform: translateX(250%); }
+        }
+
+        @keyframes maintenance-shimmer {
+          0% { transform: translateX(-140%) skewX(-18deg); }
+          100% { transform: translateX(420%) skewX(-18deg); }
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+          [role="progressbar"] > div { animation: none !important; }
+        }
+      `}</style>
     </main>
   );
 }
