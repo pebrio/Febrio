@@ -5,6 +5,7 @@ import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import ShapeGrid from "@/components/ShapeGrid";
 import Maintenance from "@/components/Maintenance";
+import Chatbot from "@/components/Chatbot"; // Import Chatbot
 
 export const metadata: Metadata = {
   title: "Akhmad Febriyo | Portfolio",
@@ -46,6 +47,7 @@ export default function RootLayout({
                 {children}
               </main>
               <Footer />
+              <Chatbot /> {/* Tambahkan komponen Chatbot di sini */}
             </div>
           </>
         )}
@@ -53,5 +55,3 @@ export default function RootLayout({
     </html>
   );
 }
-
-

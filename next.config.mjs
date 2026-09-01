@@ -1,10 +1,10 @@
-const basePath = process.env.VERCEL === '1' ? '' : '/Febrio';
+const isGithubPages = process.env.GITHUB_ACTIONS === 'true';
+const basePath = isGithubPages ? '/Febrio' : '';
 
+/** @type {import('next').NextConfig} */
 const nextConfig = {
   reactStrictMode: true,
-  output: 'export',
-  basePath,
-  assetPrefix: basePath,
+  ...(isGithubPages ? { output: 'export', basePath, assetPrefix: basePath } : {}),
   env: {
     NEXT_PUBLIC_BASE_PATH: basePath,
   },

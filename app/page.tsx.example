@@ -5,6 +5,7 @@ import ServicesSection from "@/components/ServicesSection";
 import ExperienceSection from "@/components/ExperienceSection";
 import ProjectSection from "@/components/ProjectSection";
 import ContactSection from "@/components/ContactSection";
+import Chatbot from "@/components/Chatbot";
 
 export default function Page() {
   return (
@@ -16,6 +17,19 @@ export default function Page() {
       <ExperienceSection />
       <ProjectSection />
       <ContactSection />
+      
+      {/* Chatbot AI Section */}
+      <section className="py-12 px-4 bg-gray-50">
+        <div className="max-w-4xl mx-auto">
+          <div className="text-center mb-8">
+            <h2 className="text-3xl font-bold text-gray-900 mb-2">💬 AI Assistant</h2>
+            <p className="text-gray-600">
+              Tanyakan apa saja tentang portfolio dan pengalaman saya
+            </p>
+          </div>
+          <Chatbot />
+        </div>
+      </section>
     </>
   );
 }
