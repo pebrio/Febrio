@@ -28,16 +28,24 @@ export const experiences: ExperienceItem[] = [
       "Managed operational administration, served customers, recorded income and expenses, and ensured accurate and orderly cashier processes.",
     icon: "briefcase",
     responsibilities: [
-      "Recorded daily cash inflows and outflows for the wholesale and produce store.",
-      "Served customers and processed transactions accurately.",
-      "Checked cash balances and prepared daily operational reports.",
-      "Verified inventory quantities against purchase invoices and actual stock.",
+      "Recorded and balanced daily store cash flows, encompassing all sales revenues and operational expenditures.",
+      "Managed and disbursed payments for agricultural commodities purchased directly from local farmers and community members.",
+      "Processed, verified, and logged supplier delivery receipts and purchase invoices into the ledger.",
+      "Administered accounts payable (AP) to suppliers and monitored accounts receivable (AR) collections from customers.",
+      "Prepared monthly recapitulations and tracked balances for employee loans and advances.",
+      "Served retail and wholesale customers, processing sales transactions accurately and reconciling end-of-day cash balances.",
+      "Verified physical stock inventory against incoming supplier invoices and store records.",
     ],
     achievements: [
       "Maintained accurate transaction records and organized administration.",
       "Supported smooth operations through responsive and organized service.",
       "Improved transaction process efficiency for daily transactions valued at IDR 5 million.",
     ],
+    documentationLinks: [
+      { label: "Google Drive", href: " ", type: "news" },
+      { label: "Instagram", href: "", type: "instagram" },
+    ],
+
   },
   {
     id: "it-helpdesk-tunas-dwipa-matra",
